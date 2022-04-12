@@ -11,5 +11,5 @@ module.exports = {
     },
 
     // 通用配置
-    dest: `dist`,
+    dest: `docs`,
 }
