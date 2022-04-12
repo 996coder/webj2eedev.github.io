@@ -1,0 +1,15 @@
+{
+  "name": "webj2eedev.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/webj2eedev/webj2eedev.github.io.git",
+  "author": "lzx <lzx@dareway.com.cn>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.39"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
