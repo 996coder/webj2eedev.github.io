@@ -12,7 +12,7 @@ features:
 - title: 后端
   details: 涉及 Java、Spring（MVC、Security、Boot、Cloud ...）、Linux、Docker、SVN、Git、Jenkins、Selinium 等技术
 - title: 前端
-  details: 涉及 经典前端（原生、jQuery、Bootstrap ...）、现代前端（ES6、React、Vue ...）、Nodejs、微前端、低代码 等技术
+  details: 涉及 经典前端（原生、jQuery、Bootstrap ...）、现代前端（ES6、React、Vue ...）、前端安全、Nodejs、微前端、低代码 等技术
 - title: 算法
   details: 涉及 LeetCode、动态规划、滑动窗口、堆栈、排序、树 等内容
 - title: 架构
