@@ -23,7 +23,12 @@ module.exports = {
                 ]
             },
             { text: '算法', link: '/algorithm/' },
-
+            {
+                text: '在线工具',
+                children: [
+                    { text: '图片转Base64', link: '/onlinetools/image2base64' },
+                ]
+            },
         ],
         sidebar: [
             // SidebarItem
@@ -54,8 +59,12 @@ module.exports = {
                     },
                 ],
             },
-            // 字符串 - 页面文件路径
-            '/bar/README.md',
+            {
+                text: '在线工具',
+                children: [
+                    { text: '图片转Base64', link: '/onlinetools/image2base64' },
+                ]
+            },
         ],
     },
 
