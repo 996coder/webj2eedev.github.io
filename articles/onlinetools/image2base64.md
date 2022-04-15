@@ -15,6 +15,19 @@
     </div>
 </div>
 
+<div class="fntip">
+    <p>示例：Base64 在CSS中的使用：</p>
+    <code>
+        .demoImg{ background-image: url("data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...."); }
+    </code>
+</div>
+
+<div class="fntip">
+    <p>示例：Base64 在HTML中的使用：</p>
+    <code>
+       &lt;img width="40" height="30" src="data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...." /&gt;
+    </code>
+</div>
 
 <script setup>
 import { h, ref, onMounted } from 'vue'
@@ -135,5 +148,12 @@ function setUpload(fileList){
     text-transform: uppercase;
     letter-spacing: 1px;
     content: "Code";
+}
+
+.fntip {
+    margin-top: 16px;
+}
+.fntip code {
+    border: 1px solid #ddd;
 }
 </style>
