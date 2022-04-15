@@ -1,1 +1,0 @@
-const e={key:"v-6b552713",path:"/onlinetools/image2base64.html",title:"\u56FE\u7247\u8F6CBase64",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1649987148e3,contributors:[{name:"lzx",email:"lzx@dareway.com.cn",commits:1}]},filePathRelative:"onlinetools/image2base64.md"};export{e as data};

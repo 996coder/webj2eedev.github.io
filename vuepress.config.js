@@ -23,6 +23,7 @@ module.exports = {
                 ]
             },
             { text: '算法', link: '/algorithm/' },
+            { text: '架构', link: '/architect/' },
             {
                 text: '在线工具',
                 children: [
