@@ -61,6 +61,7 @@ function setUpload(fileList){
 
 .wrapper > img {
     width: 100px;
+    pointer-events: none
 }
 
 .wrapper > h4 {
