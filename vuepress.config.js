@@ -15,15 +15,7 @@ module.exports = {
             { text: '动态', link: '/latest/' },
             { text: 'AI', link: '/ai/' },
             { text: '前端', link: '/frontend/' },
-            {
-                text: '后端',
-                children: [
-                    {
-                        text: '环境', children: [
-                            { text: 'IDEA激活', link: '/backend/envs/LatestActivateIDEA' },
-                        ]
-                    },]
-            },
+            { text: '后端', link: '/backend/' },
             { text: '算法', link: '/algorithm/' },
             { text: '架构', link: '/architect/' },
             {
