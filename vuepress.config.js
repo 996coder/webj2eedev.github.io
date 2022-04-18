@@ -18,9 +18,11 @@ module.exports = {
             {
                 text: '后端',
                 children: [
-                    { text: '英语', link: '/study/english/english01' },
-                    { text: '数学', link: '/study/math/math01' },
-                ]
+                    {
+                        text: '环境', children: [
+                            { text: 'IDEA激活', link: '/backend/envs/LatestActivateIDEA' },
+                        ]
+                    },]
             },
             { text: '算法', link: '/algorithm/' },
             { text: '架构', link: '/architect/' },
@@ -52,6 +54,11 @@ module.exports = {
                                         children: [],
                                     },
                                     {
+                                        text: 'cuDNN 是什么？',
+                                        link: '/ai/machinelearning/cudnn',
+                                        children: [],
+                                    },
+                                    {
                                         text: 'MNIST数据集',
                                         link: '/ai/machinelearning/mnist',
                                         children: [],
@@ -61,6 +68,16 @@ module.exports = {
                         ],
                     },
                 ],
+            },
+            {
+                text: '后端',
+                children: [
+                    {
+                        text: '环境', children: [
+                            { text: 'IDEA激活', link: '/backend/envs/LatestActivateIDEA' },
+                        ]
+                    },
+                ]
             },
             {
                 text: '在线工具',
