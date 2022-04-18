@@ -1,3 +1,4 @@
 # 近期发布的文章
 
-1. [CUDA 是什么？](/ai/machinelearning/cuda)
+* [cuDNN 是什么？](/ai/machinelearning/cudnn)
+* [CUDA 是什么？](/ai/machinelearning/cuda)

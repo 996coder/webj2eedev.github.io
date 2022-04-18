@@ -1,3 +1,10 @@
+---
+# NavLink
+next:
+  text: cuDNN 是什么？
+  link: /ai/machinelearning/cudnn
+---
+
 # CUDA 是什么？
 
 2006 年 11 月，NVIDIA® 推出了 CUDA®，这是一种通用并行计算平台和编程模型，它利用 NVIDIA GPU（图形处理器） 中的并行计算引擎以比 CPU 更有效的方式解决许多复杂的计算问题，可大幅提升计算性能。

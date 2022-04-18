@@ -8,8 +8,12 @@
 </div>
 
 <div class="btngroup">
-    <img title="html->entity" class="convertbtn" src="/images/htmlentityconverter/down-arrow.png" @click="entity = htmlEncode(html)"/>
-    <img title="entity->html" class="convertbtn" src="/images/htmlentityconverter/up-arrow.png" @click="html = htmlDecode(entity)"/>
+    <span @click="entity = htmlEncode(html)">
+    <img title="html->entity" class="convertbtn" src="/images/htmlentityconverter/down-arrow.png"/>
+    </span>
+    <span @click="html = htmlDecode(entity)">
+    <img title="entity->html" class="convertbtn" src="/images/htmlentityconverter/up-arrow.png" />
+    </span>
 </div>
 
 <div class="sectionwrapper">
@@ -64,9 +68,13 @@ function htmlDecode(text){
     display:flex;
     justify-content: center;
 }
-.convertbtn {
-    width: 36px;
+
+.btngroup > span {
     margin: 0 16px;
     cursor: pointer;
+}
+.convertbtn {
+    width: 36px;
+    pointer-events: none
 }
 </style>
