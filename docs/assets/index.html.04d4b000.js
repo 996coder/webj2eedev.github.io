@@ -1,1 +1,0 @@
-const t={key:"v-6c821ada",path:"/architect/",title:"\u67B6\u6784",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1649990165e3,contributors:[{name:"lzx",email:"lzx@dareway.com.cn",commits:1}]},filePathRelative:"architect/README.md"};export{t as data};

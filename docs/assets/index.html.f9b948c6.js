@@ -1,1 +1,0 @@
-const e={key:"v-8ab5d588",path:"/materials/",title:"\u8D44\u6599\u7F51\u7AD9",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u524D\u7AEF",slug:"\u524D\u7AEF",children:[]}],git:{updatedTime:1649987148e3,contributors:[{name:"lzx",email:"lzx@dareway.com.cn",commits:1}]},filePathRelative:"materials/README.md"};export{e as data};

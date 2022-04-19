@@ -17,7 +17,7 @@ MD5英文名叫MD5 Message-Digest Algorithm，一种被广泛使用的密码散�
 
 <div class="sectionwrapper">
 <span>MD5文本:</span>
-<textarea v-model="encoded" rows="10" class="entitycontent" readonly>
+<textarea v-model="encoded" rows="10" class="entitycontent" disabled>
 </textarea>
 </div>
 
@@ -41,7 +41,6 @@ const encoded = ref("");
 .entitycontent {
     display: block;
     width: 100%;
-    cursor: not-allowed;
 }
 
 .btngroup {

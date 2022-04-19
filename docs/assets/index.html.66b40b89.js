@@ -1,1 +1,0 @@
-const t={key:"v-2d0a776e",path:"/ai/",title:"\u4EBA\u5DE5\u667A\u80FD",lang:"zh-CN",frontmatter:{lang:"zh-CN",title:"\u4EBA\u5DE5\u667A\u80FD",description:"\u4EBA\u5DE5\u667A\u80FD"},excerpt:"",headers:[],git:{updatedTime:1649923644e3,contributors:[{name:"lzx",email:"lzx@dareway.com.cn",commits:1}]},filePathRelative:"ai/README.md"};export{t as data};
