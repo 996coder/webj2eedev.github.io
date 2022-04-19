@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a,a as s,b as c}from"./app.f69d7e31.js";const o={},_={id:"idea-\u6FC0\u6D3B",tabindex:"-1"},r=s("a",{class:"header-anchor",href:"#idea-\u6FC0\u6D3B","aria-hidden":"true"},"#",-1),d=c(" IDEA \u6FC0\u6D3B"),i=[r,d];function n(h,f){return t(),a("h1",_,i)}var m=e(o,[["render",n],["__file","LatestActivateIDEA.html.vue"]]);export{m as default};
