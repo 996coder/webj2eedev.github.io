@@ -1,5 +1,7 @@
 # 图片转Base64
 
+Base64 是网络上最常见的用于传输 8bit 字节码的编码方式之一。Base64 就是一种基于 ***64 个可打印字符***来表示***二进制数据***的方法。
+
 <div id="drop_area" class="wrapper" @click="selectFile">
     <img src="/images/image2base64/cloud-upload.png">
     <h4>单击此处，选择图片</h4>
@@ -15,19 +17,22 @@
     </div>
 </div>
 
-<div class="fntip">
-    <p>示例：Base64 在CSS中的使用：</p>
-    <code>
-        .demoImg{ background-image: url("data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...."); }
-    </code>
-</div>
+::: tip
+示例：Base64 在CSS中的使用：
+~~~css
+.demoImg{ 
+    background-image: url("data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...."); 
+}
+~~~
 
-<div class="fntip">
-    <p>示例：Base64 在HTML中的使用：</p>
-    <code>
-       &lt;img width="40" height="30" src="data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...." /&gt;
-    </code>
-</div>
+示例：Base64 在HTML中的使用：
+
+~~~html
+<img width="40" height="30" 
+     src="data:image/jpg;base64,/9j/4QMZRXhpZgAASUkqAAgAAAAL...." />;
+~~~
+
+::: 
 
 <script setup>
 import { h, ref, onMounted } from 'vue'
