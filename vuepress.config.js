@@ -23,6 +23,7 @@ module.exports = {
                 children: [
                     { text: '图片转Base64', link: '/onlinetools/image2base64' },
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
+                    { text: 'Base64编解码', link: '/onlinetools/base64' },
 
                 ]
             },
@@ -76,6 +77,7 @@ module.exports = {
                 children: [
                     { text: '图片转Base64', link: '/onlinetools/image2base64' },
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
+                    { text: 'Base64编解码', link: '/onlinetools/base64' },
                 ]
             },
         ],

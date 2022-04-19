@@ -11,5 +11,8 @@
   "scripts": {
     "docs:dev": "vuepress dev articles",
     "docs:build": "vuepress build articles"
+  },
+  "dependencies": {
+    "js-base64": "^3.7.2"
   }
 }
