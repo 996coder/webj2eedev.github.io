@@ -12,7 +12,7 @@ HTTP 代表超文本传输协议，它是一种用于通过网络传输数据的
 
 ![](/images/https/04.png)
 
-***HTTP 请求示例：***
+HTTP 请求示例：
 
 ~~~http
 GET /hello.txt HTTP/1.1
@@ -21,10 +21,7 @@ Host: www.example.com
 Accept-Language: en
 ~~~
 
-用户浏览器生成的这部分文本将通过 Internet 发送。而问题在于，它是明文形式发送的，监视连接的任何人都能读取它。所以当用户通过网站或 Web 应用程序提交敏感数据（例如：密码、信用卡号等）时，这尤其是一个问题。
-
-
-***HTTP 响应示例：***
+HTTP 响应示例：
 
 ~~~http
 HTTP/1.1 200 OK
@@ -39,11 +36,11 @@ Content-Type: text/plain
 Hello World!
 ~~~
 
-如果网站使用 HTTP 而非 HTTPS，则监视会话的任何人都可以读取所有请求和响应。本质上，恶意行为者可以只读取请求或响应中的文本，就能知道某人正在索取、发送或接收的确切信息。
+如果网站使用 HTTP 而非 HTTPS，用户浏览器与网站间交互的数据是**明文形式传输**的（这里不讨论网站在发送请求前自行对数据加密的情况），监视会话的任何人都可以读取所有请求和响应。所以存在特别大的安全隐患（例如：用户的提交包含敏感数据（身份证号、信用卡号、密码等））。
 
 ### 什么是 HTTPS？
 
-HTTPS 中的 S 代表“安全”。 ***HTTPS 是支持 TLS 加密的 HTTP。*** HTTPS 使用 `TLS (SSL)` 来加密普通的 HTTP 请求和响应，使它变得更加安全。使用 HTTPS 的网站的 URL 开头带有 https://，而非 http://，例如 https://www.baidu.com/。
+HTTPS 中的 S 代表“安全”。 ***HTTPS 是支持 TLS/SSL 加密的 HTTP。*** HTTPS 使用 `TLS (SSL)` 来加密普通的 HTTP 请求和响应，使它变得更加安全。使用 HTTPS 的网站的 URL 开头带有 `https://`，而非 `http://`，例如 `https://www.baidu.com/`。
 
 ![](/images/https/02.png)
 
@@ -54,13 +51,17 @@ HTTPS 中的 S 代表“安全”。 ***HTTPS 是支持 TLS 加密的 HTTP。***
 #### 原因 1：使用 HTTPS 的网站更受用户信赖。
 网站使用 HTTPS 就如餐馆展示“已通过”本地食品安全检查的标识一般：潜在的顾客可以放心，他们光顾这家店不会遭受巨大的负面影响。现如今，使用 HTTP 本质上就像展示自己“未通过”食品安全检查一样：无法保证顾客不会有可怕的遭遇。
 
-HTTPS 使用 SSL/TLS 协议对通信进行加密，使攻击者无法窃取数据。SSL/TLS 还可确认网站服务器是其真实身份，从而防止假冒。这可以阻止多种网络攻击（就像食品安全可以预防疾病一样）。
+HTTPS 使用 SSL/TLS 协议对通信进行加密，使攻击者**无法窃取数据**。SSL/TLS 还可确认网站服务器是其真实身份，从而**防止假冒**。
 
-即使某些用户可能不知 SSL/TLS 的好处，现代浏览器仍在确保它们清楚网站的可信赖性，不论程度如何。
+![](/images/https/citicbank.png)
 
-TLS 使用一种称为公钥加密的技术：密钥有两个，即公钥和私钥，其中公钥通过服务器的 SSL 证书与客户端设备共享。当客户端打开与服务器的连接时，这两个设备使用公钥和私钥商定新的密钥（称为会话密钥），以加密它们之间的后续通信。
+![](/images/https/FISHING.png)
 
-然后，所有 HTTP 请求和响应都使用这些会话密钥进行加密），使任何截获通信的人都只能看到随机字符串，而不是明文。
+::: warning
+对于那些未部署SSL证书的假冒钓鱼网站，我们在访问时就会看到“不安全”的警告，无需其它操作就能轻松进行辨别。
+
+对于部署了有效SSL证书的假冒钓鱼网站，我们不能单靠地址栏的https：//和安全锁就轻易进行判断，还应该通过点击安全锁查看证书的详细信息，仔细分辨证书的域名与你要访问的网站是否一致后再下定论。一般来说，假冒钓鱼网站的域名虽然与真实网站非常相似，但无法做到完全相同。
+:::
 
 ***Chrome 和其他浏览器将所有 HTTP 网站标记为“不安全”。***
 
@@ -68,13 +69,13 @@ TLS 使用一种称为公钥加密的技术：密钥有两个，即公钥和私�
 
 从 2018 年 7 月发布的 Chrome 68 开始，所有不安全的 HTTP 流量在 URL 栏中都会标记为“不安全”。对于没有有效 SSL 证书的网站，也都会显示此通知。其他浏览器也纷纷效仿。
 
+![](/images/https/http-not-secure.png)
+
 #### 原因 2：HTTPS 更为安全，不论是对于用户还是网站所有者。
 
 使用 HTTPS 时，数据在传输的两个方向上都会得到加密，不论是传到源服务器还是从中传出。协议确保通信安全，使恶意方无法观察到正在发送的数据。因此，用户在表单中输入的用户名和密码不会在传输过程中被盗取。如果网站或 Web 应用程序必须向用户发送敏感数据或个人数据（例如，银行帐户信息），则加密也可以保护这些数据。
 
 #### 原因 3：HTTPS 可以帮助验证网站（Web服务器）的身份。
-
-身份验证是指核实一个人或一台计算机是否是声称的身份。HTTP 中没有身份验证，它基于信任原则。但在现代 Internet 上，身份验证是不可或缺的。就像身份证件能确认一个人的身份一样，私钥可以确认服务器的身份。当客户端打开与源站服务器的连接通道时（例如，当用户导航到网站时），拥有与网站 SSL 证书中公钥匹配的私钥可证明此服务器确实是该网站的合法主机。
 
 Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以来接他们，就毫不怀疑地坐进陌生的汽车。相反，应用会告诉他们司机的相关信息，如姓名和外貌、驾驶的车型和车牌号等。用户可以检查这些信息，并确定他们将会进入正确的汽车，尽管每辆共享出行汽车各不相同，而且他们从未见过司机。
 
@@ -82,15 +83,17 @@ Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以
 
 这可以防止下面这样的攻击：攻击者假冒或伪造网站，使实际上处于虚假站点上的用户以为他们是在原本要访问的站点上。HTTPS 身份验证还可发挥更多作用来帮助公司网站拥有合法的形象，而这会影响用户对公司本身的态度。
 
-### 一些对 HTTPS 不必要的担心？
+### 时代在发展，HTTPS也在进步，有些担心多余了...
 
-#### “我的网站上不处理敏感信息，所以不需要 HTTPS”
+#### ~~“我的网站上不处理敏感信息，所以不需要 HTTPS”~~
 
-网站不实施安全性的一个常见原因是，他们认为这样做是大材小用。毕竟，如果不涉及敏感数据，有谁会在乎有没有人窥探？出于某些原因，这是将 Web 安全性过于简单化的看法。例如，某些 Internet 服务提供商实际上会将广告注入到由 HTTP 服务的网站中。这些广告或许与网站内容相称，或许不符，并有可能令人反感，不仅仅是网站提供商没有创造性的投入或收益分成。一旦站点设有安全保护，这些注入的广告将不再可行。
+网站不实施安全性的一个常见原因是，他们认为这样做是大材小用。毕竟，如果不涉及敏感数据，有谁会在乎有没有人窥探？出于某些原因，这是将 Web 安全性过于简单化的看法。**例如，某些 Internet 服务提供商实际上会将广告注入到由 HTTP 服务的网站中。** 这些广告或许与网站内容相称，或许不符，并有可能令人反感，不仅仅是网站提供商没有创造性的投入或收益分成。一旦站点设有安全保护，这些注入的广告将不再可行。
 
-如今，现代 Web 浏览器限制了不安全站点的功能。提高网站质量的重要功能需要 HTTPS。地理位置、推送通知和运行渐进式 Web 应用程序（PWA）所需的服务工作器都需要更高的安全性。这很有道理；用户位置等数据属于敏感数据，可被用于恶意目的。
+如今，现代 Web 浏览器还限制了某些功能（API接口）只能在 HTTPS 环境下使用（例如：地理位置、推送通知、摄像头等）。这很有道理，因为用户位置等数据属于敏感数据，可被用于恶意目的。
 
-#### “我不想增加页面加载时间，让网站的性能受损”
+#### ~~“我不想增加页面加载时间，让网站的性能受损”~~
+
+**先说结论：TLS 的最新版本对 web 应用程序的性能几乎没有任何影响。**
 
 性能是用户体验以及 Google 如何返回搜索结果的重要因素。可以理解，增加延迟值得认真考虑。幸运的是，随着时间推移 HTTPS 已有改进，降低了建立加密连接所需的性能开销。
 
@@ -98,13 +101,175 @@ Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以
 
 ![](/images/https/03.png)
 
-可以实施改进来减少创建 SSL 连接的总体延迟，包括 TLS 会话恢复和 TLS 错误启动。
+然而，目前已有技术帮助缓解 TLS 握手造成的延迟。其一是 TLS 会话恢复（TLS Session Resumption）。另一种加速 TLS 的技术是 TLS 错误启动（TLS False Start）。
 
-通过使用会话恢复，服务器可以通过为其他请求恢复同一会话来使连接保持更长的生存期。当客户端需要未缓存的源服务器获取时，使连接保持存活可节省重新协商连接所花费的时间，从而将总 RTT 缩短 50％。
+* 通过使用会话恢复（TLS Session Resumption），服务器可以通过为其他请求恢复同一会话来使连接保持更长的生存期。当客户端需要未缓存的源服务器获取时，使连接保持存活可节省重新协商连接所花费的时间，从而将总 RTT 缩短 50％。
 
-加密通道创建速度上的另一改进是实施一个称为 TLS 错误启动的过程，通过在客户端完成身份验证之前发送加密数据来缩短等待时间。
+* 加密通道创建速度上的另一改进是实施一个称为 TLS 错误启动（TLS False Start）的过程，这是一个可选的协议扩展，允许您在TLS握手仅部分完成时发送数据。
 
-最后一点同样重要，HTTPS 使用 HTTP/2 来解锁性能增强功能，让您能够做一些很酷的事，如服务器推送和多路复用，它们可以极大优化 HTTP 请求的性能。总体而言，进行这一切换具有明显的性能优势。
+这些改良帮助 TLS 成为一种非常快速的协议，不会明显影响加载时间。至于与 TLS 相关的计算成本，以今天的标准来看几乎可以忽略不计。
+
+2018 年发布的 TLS 1.3 进一步提高了 TLS 的速度。TLS 1.3 中的 TLS 握手仅需要一次往返（即来回通信），而不是以前的两次，将握手过程所需时间缩短了几毫秒。如果用户以前已连接过网站，TLS 握手的往返次数为零，从而进一步加快了速度。
+
+
+## 密码学必备小知识
+
+### 什么是加密？
+
+加密是扰乱数据以便只有授权方才能理解信息的一种方式。从技术上讲，它是将人类可读的明文转换为不可理解文本（也称为密文）的过程。简单地说，加密接受可读的数据并对其进行修改，以使其看起来是随机的。加密需要使用密钥：加密消息的发件人和收件人约定的一组数学值。
+
+![](/images/https/encryption-example.svg)
+
+尽管加密数据看起来是随机的，但加密是以一种逻辑的、可预测的方式进行的，因此接收加密数据并拥有正确密钥的一方可以解密数据，将其变回明文。真正安全的加密将使用足够复杂的密钥，使第三方不大可能通过暴力破解（或者说，通过猜测）来解密或破坏密文。
+
+数据可在存储时“静止”加密，也可以在传输到其他地方时“传输中”加密。
+
+
+#### 为什么需要数据加密？
+
+* 隐私：加密可确保除预期的收件人或正当的数据所有者以外，任何人都无法读取静止的通信或数据。这可以防止攻击者、广告网络、互联网服务提供商以及（在某些情况下）政府拦截和读取敏感数据。
+
+* 安全性：无论是传输中的数据还是静止数据，加密都有助于防止数据泄露。如果公司设备丢失或被盗，且其硬盘驱动器已适当加密，则该设备上的数据将仍是安全的。类似地，加密通信使通信双方能够交换敏感数据而不会泄露数据。
+
+* 数据完整性： 加密还有助于防止恶意行为，如在途攻击。当数据在互联网上传输时，加密（与其他完整性保护措施一起）可确保收件人收到的内容在途中没有被篡改过。
+
+* 身份验证：此外，公钥加密可用于确定网站所有者拥有网站的 TLS 证书中列出的私钥。这让网站用户可以确定他们连接到了真正的网站（请参阅什么是公钥加密？了解更多信息）。
+
+* 法规：出于所有这些原因，许多行业和政府法规要求处理用户数据的公司对这些数据进行加密。需要加密的法规与合规性标准的示例包括 HIPAA、PCI-DSS 和 GDPR。
+
+#### 密码学中的“随机”是什么意思？
+在密码学中，随机并不仅仅意味着统计学上的随机；它也表示不可预测性。假设有人将一个六面骰子掷了二十四次，结果如下：
+
+1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6
+
+从统计学上看，这是掷骰子结果的随机分布。每个数字的投掷概率相同，因此出现这一序列在概率范围之内。
+
+但是，这个顺序并非不可预测。如果将它用于加密，攻击者可能会找出这种模式。
+
+#### 为什么真正不可预测性对于加密很重要？
+加密的数据看起来应该像完全随机的数据，因为可预测的数据是能被猜到的。如果存在某种模式，例如特定的值用于加密的频率高于其他值，或者值始终以一定的顺序出现，那么数学分析能够挑选出这种模式，从而使攻击者更容易地猜测到加密所用的密钥。基本而言，如果加密数据可以预测，那么它或许已遭到破坏。
+
+The process of encryption itself is a predictable one: Encrypted data plus the right key equals decrypted data, and the decrypted data is the same as it was before it was encrypted. But the encryption keys used have to be unpredictable.
+
+为了解为什么不可预测性为何如此重要，我们可以想象两位扑克玩家：鲍勃总是在有好牌时加注，牌不好时则弃牌（拒绝跟注）。爱丽丝则混合使用下注策略，因此没有明显的模式：有时在牌好时加注，有时满足于跟注，有时甚至会在牌不好时通过加大注来诈牌。如果爱丽丝和鲍勃参加同一届扑克锦标赛，爱丽丝的存活时间要比鲍勃更长，因为鲍勃太容易预测。对手很快就会知道鲍勃什么时候有好牌，并做出应对。即使看不到他的牌，他们也可以大致分辨出他手里的牌。
+
+同样，即使攻击者看不到通过网络发送的“牌”（或加密的内容），但如果隐匿内容的方法太容易预测，他们仍然可以猜测到。
+
+#### 为什么计算机无法创造随机性？
+
+计算机以逻辑为基础运行。计算机程序基于 if-then 语句：如果满足某些条件，则执行指定的操作。如果程序的输入相同，那么每次都会产生相同的输出。
+
+这是设计使然。输入应导致预期的输出，而不是意外的输出。想象一下，如果打印机打印出与文档中文本不同的随机，或者智能手机呼叫的电话号码与用户输入的不同，那就混乱不堪了。计算机的用处正是源于它的（相对）可靠性和可预测性。但是，在生成安全加密密钥时，这种可预测性成为了不利因素。
+
+有些计算机程序擅长模拟随机性，但对创建加密密钥来说仍然不够。
+
+计算机如何使用现实世界中的随机输入来生成随机数据？
+一种称为伪随机数生成器（PRNG）的软件程序能够获取不可预测的输入，并用它来生成不可预测的输出。从理论上讲，PRNG 可以从随机输入产生无限的随机输出。
+
+这种算法之所以称为“伪随机”而非“随机”，是因为它的输出实际上并不是完全随机的。为何会如此？主要有两个原因：
+
+1. 连续两次给定相同的种子作为起点，PRNG 会产生完全相同的结果。
+2. 很难证明它生成的结果在整个时间内完全随机（如果 PRNG 无限期运行）。
+
+由于第 2 个原因，该算法不断需要新的随机输入。随机输入称为“密码种子”。
+
+#### 密码安全伪随机数生成器是什么？
+密码安全伪随机数生成器（或 CSPRNG）是满足更严格标准的 PRNG，能够更安全地用于加密。CSPRNG 满足 PRNG 不一定满足的两个要求：
+
+必须通过某些统计随机性检验才能证明不可预测性。
+攻击者即使对程序有部分访问权，也肯定无法预测 CSPRNG 的输出。
+如同 PRNG 一样，CSPRNG 需要以随机数据（密码种子）为起点，从中生成更多随机数据。
+
+#### 什么是密码种子？
+
+**密码种子是 CSPRNG 于生成随机数据的起点数据。** 尽管从理论上讲 CSPRNG 可以从单个密码种子产生无限的随机输出，但是定期更新密码种子要安全得多。攻击者最终可能会攻破初始的密码种子。另请记住，如果被提供相同的种子，CSPRNG 会再次产生完全相同的输出，因此攻击者可以复制随机输出。此外，即使是经过最严格测试的 CSPRNG，也无法保证无限期产生不可预测的结果。
+
+通过使用熔岩灯，Cloudflare 可以不断获得新的加密种子数据。相机拍摄到的每张熔岩灯照片都是不同的，从而能产生可用作种子的不同随机数值序列。
+
+#### 什么是密码学中的密钥？
+在密码学中，密钥是用于打乱数据以便使其显得随机的一条信息；它通常是一个很大的数字，或者是一串数字和字母。当使用密钥将未加密的数据（也称为明文）放入加密算法中时，明文会从另一面看似随机数据。但是，任何拥有正确密钥解密数据的人都可以将其放回纯文本格式。
+
+![](/images/https/cryptographic-key-hello.png)
+
+原始数据称为明文 ，密钥加密后的数据称为密文 。
+
+
+For example, suppose we take a plaintext message, "hello," and encrypt it with a key*; let's say the key is "2jd8932kd8." Encrypted with this key, our simple "hello" now reads "X5xJCSycg14=", which seems like random garbage data. However, by decrypting it with that same key, we get "hello" back.
+
+明文 + 密钥 = 密文：
+
+`你好 + 2jd8932kd8 = X5xJCSycg14x `
+
+密文 + 密钥 = 明文：
+
+`X5xJCSycg14x + 2jd8932kd8 = 你好`
+
+
+#### 有哪些不同类型的加密？
+两种主要的加密是对称加密和非对称加密。非对称加密也称为公钥加密。
+
+* 在对称加密中，**只有一个密钥**，所有通信方都使用相同的（秘密）密钥进行加密和解密。
+* 在非对称或公钥加密中，**有两个密钥**：一个用于加密，另一个用于解密。解密密钥是保密的（因此称为“**私钥**”），而加密密钥是公开的，供任何人使用（因此称为“**公钥**”）。非对称加密是 TLS（通常称为 SSL）的基础技术。
+
+
+#### 什么是加密算法？
+加密算法是用于将数据转换为密文的数学公式。算法将使用密钥以可预测的方式更改数据，以便即使加密的数据看起来是随机的，也可以通过再次使用密钥将其变回明文。
+
+#### 常用的加密算法有哪些？
+常用的对称加密算法包括：
+
+* AES
+* 3-DES
+* SNOW
+
+常用的非对称加密算法包括：
+
+* RSA
+* 椭圆曲线加密
+
+#### 什么是加密中的暴力攻击？
+暴力破解攻击是指不知道解密密钥的攻击者试图通过数百万次或数十亿次的猜测来确定密钥。使用现代计算机的暴力破解攻击要快得多，这就是为什么加密必须极其强大和复杂的原因。大多数现代的加密方法，加上高质量的密码，都能抵抗暴力破解攻击，尽管随着计算机的功能越来越强大，它们在未来会变得越来越容易遭受此类攻击。弱密码仍然容易受到暴力破解攻击。
+
+### 公钥加密
+
+Public key encryption, or public key cryptography, is a method of encrypting data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key, and data encrypted with the private key can only be decrypted with the public key. Public key encryption is also known as asymmetric encryption. It is widely used, especially for TLS/SSL, which makes HTTPS possible.
+
+#### 公钥加密如何运作？
+
+Public key cryptography can seem complex for the uninitiated; fortunately a writer named Panayotis Vryonis came up with an analogy that roughly goes as follows.
+
+想象一下，鲍勃和爱丽丝这两个人用一个带锁的箱子来回运送文件。通常来说锁只有两种状态：上锁和解锁。任何有钥匙的人都可以打开上锁的箱子，反之亦然。当鲍勃锁上箱子并将其运送给爱丽丝的时候，他知道爱丽丝可以使用复制的钥匙来解开箱子。从本质上讲，这就是所谓的对称加密的工作方式：一个秘钥同时用于加密和解密，对话的双方都使用相同的密钥。
+
+现在，想象一下，鲍勃制作了一种带有特殊锁的行李箱。此锁具有三个状态，而不是两个：
+
+A.锁定，钥匙一直旋转到左侧
+B.解锁，钥匙旋转到中间。
+C.锁定，钥匙一直旋转到右侧。
+
+
+![](/images/https/ssl-lock-analogy.svg)
+
+该锁带有两把钥匙，而不是一把钥匙：
+
+1号钥匙只能向左转
+2号钥匙只能向右转
+这意味着如果后备箱被锁定并且钥匙转到位置A，只有2号钥匙可以通过向右转到位置B（解锁）来解锁。如果行李箱锁定在位置C，则只有1号钥匙可以通过将锁向左转动到位置B来解锁。
+
+换言之，两把钥匙任选其一都可以锁定箱子，但是一旦锁定后，只有另一把钥匙可以解锁箱子。
+
+现在，假设鲍勃制作了几十个只能向右旋转的2号钥匙，然后为他认识的并且想要这把钥匙的每个人都配了一把，并将其作为他的公共钥匙。而他为自己保留了1号钥匙，作为他的私钥。这有什么作用？
+
+Alice can send Bob confidential data via the trunk and be confident that only Bob can unlock it. Once Alice has locked the trunk with the public key, which turns from left to right, only a key that can turn right to left can unlock it. That means only Bob's private key can unlock it.
+Alice can be sure that the trunk is actually from Bob, and not an impersonator, if it's locked with his private key. There's only one key that can lock the trunk so that the lock is in position A, or turned all the way to the left: Bob's private key. True, anyone can unlock it with the public key by turning the key to the right, but it's guaranteed that the trunk is from Bob.
+以此类推，在这个比喻中，纯文本信息就是箱子，密钥就等同于实体钥匙，这就是公共密钥加密的运作方式。只有私钥的所有者才能加密数据，让公钥对其进行解密；同时，任何人都可以使用公钥加密数据，但是只有私钥的所有者才能解密它。
+
+Therefore, anyone can send data securely to the private key owner. Also, anyone can verify that data they receive from the owner of the private key is actually from that source, and not from an impersonator (see What is an on-path attack?).
+
+#### TLS / SSL如何使用公共密钥加密？
+Public key encryption is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's SSL/TLS certificate, which is shared publicly, contains the public key, and the private key is installed on the origin server – it's "owned" by the website.
+
+TLS handshakes use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys.
+
 
 ## SSL/TLS
 
@@ -249,17 +414,7 @@ TLS 握手为每个通信会话建立一个密码套件。密码套件是一组�
 
 ![](/images/https/03.png)
 
-#### TLS 如何影响 Web 应用程序性能？
 
-TLS 的最新版本对 web 应用程序的性能几乎没有任何影响。
-
-由于建立 TLS 连接涉及到的复杂过程，因此必须花费一些加载时间和计算能力。在传输任何数据之前，客户端和服务器必须来回通信几次，这将占用 web 应用程序宝贵的几毫秒加载时间，以及客户端和服务器的一些内存。
-
-然而，目前已有技术帮助缓解 TLS 握手造成的延迟。其一是 TLS 虚假启动（False Start），让服务器和客户端在 TLS 握手完成前开始传输数据。另一种加速 TLS 的技术是 TLS 会话恢复，允许之前通信过的客户端和服务器简化握手过程。
-
-这些改良帮助 TLS 成为一种非常快速的协议，不会明显影响加载时间。至于与 TLS 相关的计算成本，以今天的标准来看几乎可以忽略不计。
-
-2018 年发布的 TLS 1.3 进一步提高了 TLS 的速度。TLS 1.3 中的 TLS 握手仅需要一次往返（即来回通信），而不是以前的两次，将握手过程所需时间缩短了几毫秒。如果用户以前已连接过网站，TLS 握手的往返次数为零，从而进一步加快了速度。
 
 ### SSL/TLS 如何工作？
 
@@ -372,169 +527,6 @@ Master机密是通过算法将客户端随机数、服务器随机数和Premaste
 MAC（消息身份验证代码）密钥用于对消息进行数字签名。服务器使用服务器写入MAC密钥对消息进行签名，并且当客户端收到消息时，它可以对照自己的服务器MAC密钥记录检查使用的MAC密钥，以确保其合法性。客户端则使用客户端写入MAC密钥签署消息。
 
 每个新的通信会话和新的TLS握手都会创建一组4个全新的会话密钥。会有一个不同的客户端写入密钥、服务器写入密钥等等，但是每次都会创建这4种类型的密钥。
-
-## 关于加密
-
-### 什么是加密？
-
-加密是扰乱数据以便只有授权方才能理解信息的一种方式。从技术上讲，它是将人类可读的明文转换为不可理解文本（也称为密文）的过程。简单地说，加密接受可读的数据并对其进行修改，以使其看起来是随机的。加密需要使用密钥：加密消息的发件人和收件人约定的一组数学值。
-
-![](/images/https/encryption-example.svg)
-
-尽管加密数据看起来是随机的，但加密是以一种逻辑的、可预测的方式进行的，因此接收加密数据并拥有正确密钥的一方可以解密数据，将其变回明文。真正安全的加密将使用足够复杂的密钥，使第三方不大可能通过暴力破解（或者说，通过猜测）来解密或破坏密文。
-
-数据可在存储时“静止”加密，也可以在传输到其他地方时“传输中”加密。
-
-#### 密码学中的“随机”是什么意思？
-在密码学中，随机并不仅仅意味着统计学上的随机；它也表示不可预测性。假设有人将一个六面骰子掷了二十四次，结果如下：
-
-1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6
-
-从统计学上看，这是掷骰子结果的随机分布。每个数字的投掷概率相同，因此出现这一序列在概率范围之内。
-
-但是，这个顺序并非不可预测。如果将它用于加密，攻击者可能会找出这种模式。
-
-#### 为什么真正不可预测性对于加密很重要？
-加密的数据看起来应该像完全随机的数据，因为可预测的数据是能被猜到的。如果存在某种模式，例如特定的值用于加密的频率高于其他值，或者值始终以一定的顺序出现，那么数学分析能够挑选出这种模式，从而使攻击者更容易地猜测到加密所用的密钥。基本而言，如果加密数据可以预测，那么它或许已遭到破坏。
-
-The process of encryption itself is a predictable one: Encrypted data plus the right key equals decrypted data, and the decrypted data is the same as it was before it was encrypted. But the encryption keys used have to be unpredictable.
-
-为了解为什么不可预测性为何如此重要，我们可以想象两位扑克玩家：鲍勃总是在有好牌时加注，牌不好时则弃牌（拒绝跟注）。爱丽丝则混合使用下注策略，因此没有明显的模式：有时在牌好时加注，有时满足于跟注，有时甚至会在牌不好时通过加大注来诈牌。如果爱丽丝和鲍勃参加同一届扑克锦标赛，爱丽丝的存活时间要比鲍勃更长，因为鲍勃太容易预测。对手很快就会知道鲍勃什么时候有好牌，并做出应对。即使看不到他的牌，他们也可以大致分辨出他手里的牌。
-
-同样，即使攻击者看不到通过网络发送的“牌”（或加密的内容），但如果隐匿内容的方法太容易预测，他们仍然可以猜测到。
-
-#### 为什么计算机无法创造随机性？
-计算机以逻辑为基础运行。计算机程序基于 if-then 语句：如果满足某些条件，则执行指定的操作。如果程序的输入相同，那么每次都会产生相同的输出。
-
-这是设计使然。输入应导致预期的输出，而不是意外的输出。想象一下，如果打印机打印出与文档中文本不同的随机，或者智能手机呼叫的电话号码与用户输入的不同，那就混乱不堪了。计算机的用处正是源于它的（相对）可靠性和可预测性。但是，在生成安全加密密钥时，这种可预测性成为了不利因素。
-
-有些计算机程序擅长模拟随机性，但对创建加密密钥来说仍然不够。
-
-计算机如何使用现实世界中的随机输入来生成随机数据？
-一种称为伪随机数生成器（PRNG）的软件程序能够获取不可预测的输入，并用它来生成不可预测的输出。从理论上讲，PRNG 可以从随机输入产生无限的随机输出。
-
-这种算法之所以称为“伪随机”而非“随机”，是因为它的输出实际上并不是完全随机的。为何会如此？主要有两个原因：
-
-连续两次给定相同的种子作为起点，PRNG 会产生完全相同的结果。
-很难证明它生成的结果在整个时间内完全随机（如果 PRNG 无限期运行）。
-由于第 2 个原因，该算法不断需要新的随机输入。随机输入称为“密码种子”。
-
-#### 密码安全伪随机数生成器是什么？
-密码安全伪随机数生成器（或 CSPRNG）是满足更严格标准的 PRNG，能够更安全地用于加密。CSPRNG 满足 PRNG 不一定满足的两个要求：
-
-必须通过某些统计随机性检验才能证明不可预测性。
-攻击者即使对程序有部分访问权，也肯定无法预测 CSPRNG 的输出。
-如同 PRNG 一样，CSPRNG 需要以随机数据（密码种子）为起点，从中生成更多随机数据。
-
-为了生成用于 SSL/TLS 加密的加密密钥，Cloudflare 使用 CSPRNG，并将从熔岩灯收集的数据作为密码种子的一部分。
-
-#### 什么是密码种子？
-密码种子是 CSPRNG 于生成随机数据的起点数据。尽管从理论上讲 CSPRNG 可以从单个密码种子产生无限的随机输出，但是定期更新密码种子要安全得多。攻击者最终可能会攻破初始的密码种子。另请记住，如果被提供相同的种子，CSPRNG 会再次产生完全相同的输出，因此攻击者可以复制随机输出。此外，即使是经过最严格测试的 CSPRNG，也无法保证无限期产生不可预测的结果。
-
-通过使用熔岩灯，Cloudflare 可以不断获得新的加密种子数据。相机拍摄到的每张熔岩灯照片都是不同的，从而能产生可用作种子的不同随机数值序列。
-
-#### 什么是密码学中的密钥？
-加密密钥是加密算法中用于更改数据而使用的字符串，以便使其看起来是随机的。就像实体钥匙一样，它锁定（加密）数据，以便只有拥有相匹配的钥匙的人才能解锁（解密）数据。
-
-![](/images/https/cryptographic-key-hello.png)
-
-原始数据称为明文 ，密钥加密后的数据称为密文 。
-
-#### 有哪些不同类型的加密？
-两种主要的加密是对称加密和非对称加密。非对称加密也称为公钥加密。
-
-在对称加密中，只有一个密钥，所有通信方都使用相同的（秘密）密钥进行加密和解密。在非对称或公钥加密中，有两个密钥：一个用于加密，另一个用于解密。解密密钥是保密的（因此称为“私钥”），而加密密钥是公开的，供任何人使用（因此称为“公钥”）。非对称加密是 TLS（通常称为 SSL）的基础技术。
-
-#### 为什么需要数据加密？
-
-* 隐私：加密可确保除预期的收件人或正当的数据所有者以外，任何人都无法读取静止的通信或数据。这可以防止攻击者、广告网络、互联网服务提供商以及（在某些情况下）政府拦截和读取敏感数据。
-
-* 安全性：无论是传输中的数据还是静止数据，加密都有助于防止数据泄露。如果公司设备丢失或被盗，且其硬盘驱动器已适当加密，则该设备上的数据将仍是安全的。类似地，加密通信使通信双方能够交换敏感数据而不会泄露数据。
-
-* 数据完整性： 加密还有助于防止恶意行为，如在途攻击。当数据在互联网上传输时，加密（与其他完整性保护措施一起）可确保收件人收到的内容在途中没有被篡改过。
-
-* 身份验证：此外，公钥加密可用于确定网站所有者拥有网站的 TLS 证书中列出的私钥。这让网站用户可以确定他们连接到了真正的网站（请参阅什么是公钥加密？了解更多信息）。
-
-* 法规：出于所有这些原因，许多行业和政府法规要求处理用户数据的公司对这些数据进行加密。需要加密的法规与合规性标准的示例包括 HIPAA、PCI-DSS 和 GDPR。
-
-#### 什么是加密算法？
-加密算法是用于将数据转换为密文的数学公式。算法将使用密钥以可预测的方式更改数据，以便即使加密的数据看起来是随机的，也可以通过再次使用密钥将其变回明文。
-
-#### 常用的加密算法有哪些？
-常用的对称加密算法包括：
-
-* AES
-* 3-DES
-* SNOW
-
-常用的非对称加密算法包括：
-
-* RSA
-* 椭圆曲线加密
-
-#### 什么是加密中的暴力攻击？
-暴力破解攻击是指不知道解密密钥的攻击者试图通过数百万次或数十亿次的猜测来确定密钥。使用现代计算机的暴力破解攻击要快得多，这就是为什么加密必须极其强大和复杂的原因。大多数现代的加密方法，加上高质量的密码，都能抵抗暴力破解攻击，尽管随着计算机的功能越来越强大，它们在未来会变得越来越容易遭受此类攻击。弱密码仍然容易受到暴力破解攻击。
-
-#### 如何使用加密来保证 Internet 浏览的安全？
-加密是各种技术的基础，但对于保证 HTTP 请求和响应的安全，以及对网站源服务器进行身份验证尤为重要。负责此功能的协议称为 HTTPS��超文本传输协议安全）。通过 HTTPS 而不是 HTTP 提供服务的网站的 URL 将以 https:// 开头，而不是 http://，通常由地址栏中的安全锁标志来表示。
-
-HTTPS 使用所谓的传输层安全 (TLS) 加密协议。过去，名为安全套接字层 (SSL) 的早期加密协议被视为标准，但 TLS 已取代 SSL。实施 HTTPS 的网站在其源服务器上安装 TLS 证书。
-
-### 公钥加密
-
-Public key encryption, or public key cryptography, is a method of encrypting data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key, and data encrypted with the private key can only be decrypted with the public key. Public key encryption is also known as asymmetric encryption. It is widely used, especially for TLS/SSL, which makes HTTPS possible.
-
-#### 什么是加密密钥？
-在密码学中，密钥是用于打乱数据以便使其显得随机的一条信息；它通常是一个很大的数字，或者是一串数字和字母。当使用密钥将未加密的数据（也称为明文）放入加密算法中时，明文会从另一面看似随机数据。但是，任何拥有正确密钥解密数据的人都可以将其放回纯文本格式。
-
-For example, suppose we take a plaintext message, "hello," and encrypt it with a key*; let's say the key is "2jd8932kd8." Encrypted with this key, our simple "hello" now reads "X5xJCSycg14=", which seems like random garbage data. However, by decrypting it with that same key, we get "hello" back.
-
-纯文本+密钥=密文：
-
-你好+ 2jd8932kd8 = X5xJCSycg14 = 
-密文+密钥=纯文本明文：
-
- X5xJCSycg14 = + 2jd8932kd8 =你好
-（这是对称加密的示例，其中仅使用一个密钥。）
-
-* 使用Blowfish算法、CBC模式和Base64编码。
-
-
-#### 公钥加密如何运作？
-
-Public key cryptography can seem complex for the uninitiated; fortunately a writer named Panayotis Vryonis came up with an analogy that roughly goes as follows.
-
-想象一下，鲍勃和爱丽丝这两个人用一个带锁的箱子来回运送文件。通常来说锁只有两种状态：上锁和解锁。任何有钥匙的人都可以打开上锁的箱子，反之亦然。当鲍勃锁上箱子并将其运送给爱丽丝的时候，他知道爱丽丝可以使用复制的钥匙来解开箱子。从本质上讲，这就是所谓的对称加密的工作方式：一个秘钥同时用于加密和解密，对话的双方都使用相同的密钥。
-
-现在，想象一下，鲍勃制作了一种带有特殊锁的行李箱。此锁具有三个状态，而不是两个：
-
-A.锁定，钥匙一直旋转到左侧
-B.解锁，钥匙旋转到中间。
-C.锁定，钥匙一直旋转到右侧。
-
-
-![](/images/https/ssl-lock-analogy.svg)
-
-该锁带有两把钥匙，而不是一把钥匙：
-
-1号钥匙只能向左转
-2号钥匙只能向右转
-这意味着如果后备箱被锁定并且钥匙转到位置A，只有2号钥匙可以通过向右转到位置B（解锁）来解锁。如果行李箱锁定在位置C，则只有1号钥匙可以通过将锁向左转动到位置B来解锁。
-
-换言之，两把钥匙任选其一都可以锁定箱子，但是一旦锁定后，只有另一把钥匙可以解锁箱子。
-
-现在，假设鲍勃制作了几十个只能向右旋转的2号钥匙，然后为他认识的并且想要这把钥匙的每个人都配了一把，并将其作为他的公共钥匙。而他为自己保留了1号钥匙，作为他的私钥。这有什么作用？
-
-Alice can send Bob confidential data via the trunk and be confident that only Bob can unlock it. Once Alice has locked the trunk with the public key, which turns from left to right, only a key that can turn right to left can unlock it. That means only Bob's private key can unlock it.
-Alice can be sure that the trunk is actually from Bob, and not an impersonator, if it's locked with his private key. There's only one key that can lock the trunk so that the lock is in position A, or turned all the way to the left: Bob's private key. True, anyone can unlock it with the public key by turning the key to the right, but it's guaranteed that the trunk is from Bob.
-以此类推，在这个比喻中，纯文本信息就是箱子，密钥就等同于实体钥匙，这就是公共密钥加密的运作方式。只有私钥的所有者才能加密数据，让公钥对其进行解密；同时，任何人都可以使用公钥加密数据，但是只有私钥的所有者才能解密它。
-
-Therefore, anyone can send data securely to the private key owner. Also, anyone can verify that data they receive from the owner of the private key is actually from that source, and not from an impersonator (see What is an on-path attack?).
-
-#### TLS / SSL如何使用公共密钥加密？
-Public key encryption is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's SSL/TLS certificate, which is shared publicly, contains the public key, and the private key is installed on the origin server – it's "owned" by the website.
-
-TLS handshakes use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys.
 
 ## HTTPS 中间人攻击及其防范
 
