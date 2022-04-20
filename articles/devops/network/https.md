@@ -125,7 +125,7 @@ Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以
 数据可在存储时“静止”加密，也可以在传输到其他地方时“传输中”加密。
 
 
-#### 为什么需要数据加密？
+### 为什么需要数据加密？
 
 * 隐私：加密可确保除预期的收件人或正当的数据所有者以外，任何人都无法读取静止的通信或数据。这可以防止攻击者、广告网络、互联网服务提供商以及（在某些情况下）政府拦截和读取敏感数据。
 
@@ -137,7 +137,7 @@ Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以
 
 * 法规：出于所有这些原因，许多行业和政府法规要求处理用户数据的公司对这些数据进行加密。需要加密的法规与合规性标准的示例包括 HIPAA、PCI-DSS 和 GDPR。
 
-#### 密码学中的“随机”是什么意思？
+### 密码学中的“随机”是什么意思？
 在密码学中，随机并不仅仅意味着统计学上的随机；它也表示不可预测性。假设有人将一个六面骰子掷了二十四次，结果如下：
 
 1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6，1，2，3，4，5，6
@@ -146,7 +146,7 @@ Uber 和 Lyft 等共享出行应用的用户不会仅仅是因为司机说可以
 
 但是，这个顺序并非不可预测。如果将它用于加密，攻击者可能会找出这种模式。
 
-#### 为什么真正不可预测性对于加密很重要？
+### 为什么真正不可预测性对于加密很重要？
 加密的数据看起来应该像完全随机的数据，因为可预测的数据是能被猜到的。如果存在某种模式，例如特定的值用于加密的频率高于其他值，或者值始终以一定的顺序出现，那么数学分析能够挑选出这种模式，从而使攻击者更容易地猜测到加密所用的密钥。基本而言，如果加密数据可以预测，那么它或许已遭到破坏。
 
 The process of encryption itself is a predictable one: Encrypted data plus the right key equals decrypted data, and the decrypted data is the same as it was before it was encrypted. But the encryption keys used have to be unpredictable.
@@ -155,7 +155,7 @@ The process of encryption itself is a predictable one: Encrypted data plus the r
 
 同样，即使攻击者看不到通过网络发送的“牌”（或加密的内容），但如果隐匿内容的方法太容易预测，他们仍然可以猜测到。
 
-#### 为什么计算机无法创造随机性？
+### 为什么计算机无法创造随机性？
 
 计算机以逻辑为基础运行。计算机程序基于 if-then 语句：如果满足某些条件，则执行指定的操作。如果程序的输入相同，那么每次都会产生相同的输出。
 
@@ -173,20 +173,20 @@ The process of encryption itself is a predictable one: Encrypted data plus the r
 
 由于第 2 个原因，该算法不断需要新的随机输入。随机输入称为“密码种子”。
 
-#### 密码安全伪随机数生成器是什么？
+### 密码安全伪随机数生成器是什么？
 密码安全伪随机数生成器（或 CSPRNG）是满足更严格标准的 PRNG，能够更安全地用于加密。CSPRNG 满足 PRNG 不一定满足的两个要求：
 
 必须通过某些统计随机性检验才能证明不可预测性。
 攻击者即使对程序有部分访问权，也肯定无法预测 CSPRNG 的输出。
 如同 PRNG 一样，CSPRNG 需要以随机数据（密码种子）为起点，从中生成更多随机数据。
 
-#### 什么是密码种子？
+### 什么是密码种子？
 
 **密码种子是 CSPRNG 于生成随机数据的起点数据。** 尽管从理论上讲 CSPRNG 可以从单个密码种子产生无限的随机输出，但是定期更新密码种子要安全得多。攻击者最终可能会攻破初始的密码种子。另请记住，如果被提供相同的种子，CSPRNG 会再次产生完全相同的输出，因此攻击者可以复制随机输出。此外，即使是经过最严格测试的 CSPRNG，也无法保证无限期产生不可预测的结果。
 
 通过使用熔岩灯，Cloudflare 可以不断获得新的加密种子数据。相机拍摄到的每张熔岩灯照片都是不同的，从而能产生可用作种子的不同随机数值序列。
 
-#### 什么是密码学中的密钥？
+### 什么是密码学中的密钥？
 在密码学中，密钥是用于打乱数据以便使其显得随机的一条信息；它通常是一个很大的数字，或者是一串数字和字母。当使用密钥将未加密的数据（也称为明文）放入加密算法中时，明文会从另一面看似随机数据。但是，任何拥有正确密钥解密数据的人都可以将其放回纯文本格式。
 
 ![](/images/https/cryptographic-key-hello.png)
@@ -205,17 +205,17 @@ For example, suppose we take a plaintext message, "hello," and encrypt it with a
 `X5xJCSycg14x + 2jd8932kd8 = 你好`
 
 
-#### 有哪些不同类型的加密？
+### 有哪些不同类型的加密？
 两种主要的加密是对称加密和非对称加密。非对称加密也称为公钥加密。
 
 * 在对称加密中，**只有一个密钥**，所有通信方都使用相同的（秘密）密钥进行加密和解密。
 * 在非对称或公钥加密中，**有两个密钥**：一个用于加密，另一个用于解密。解密密钥是保密的（因此称为“**私钥**”），而加密密钥是公开的，供任何人使用（因此称为“**公钥**”）。非对称加密是 TLS（通常称为 SSL）的基础技术。
 
 
-#### 什么是加密算法？
+### 什么是加密算法？
 加密算法是用于将数据转换为密文的数学公式。算法将使用密钥以可预测的方式更改数据，以便即使加密的数据看起来是随机的，也可以通过再次使用密钥将其变回明文。
 
-#### 常用的加密算法有哪些？
+### 常用的加密算法有哪些？
 常用的对称加密算法包括：
 
 * AES
@@ -227,32 +227,35 @@ For example, suppose we take a plaintext message, "hello," and encrypt it with a
 * RSA
 * 椭圆曲线加密
 
-#### 什么是加密中的暴力攻击？
+### 什么是加密中的暴力攻击？
 暴力破解攻击是指不知道解密密钥的攻击者试图通过数百万次或数十亿次的猜测来确定密钥。使用现代计算机的暴力破解攻击要快得多，这就是为什么加密必须极其强大和复杂的原因。大多数现代的加密方法，加上高质量的密码，都能抵抗暴力破解攻击，尽管随着计算机的功能越来越强大，它们在未来会变得越来越容易遭受此类攻击。弱密码仍然容易受到暴力破解攻击。
+
+### 数字签名
+
+现实世界中，签名是针对承诺的一种表现形式，手手段可以通过手写签字或盖扣印章；而在数字世界中，签名仍然是为了表示承诺，只是手段变成了二进制。
+
+![](/images/https/20210127111840315.png)
 
 ### 公钥加密
 
 Public key encryption, or public key cryptography, is a method of encrypting data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key, and data encrypted with the private key can only be decrypted with the public key. Public key encryption is also known as asymmetric encryption. It is widely used, especially for TLS/SSL, which makes HTTPS possible.
 
-#### 公钥加密如何运作？
-
-Public key cryptography can seem complex for the uninitiated; fortunately a writer named Panayotis Vryonis came up with an analogy that roughly goes as follows.
-
 想象一下，鲍勃和爱丽丝这两个人用一个带锁的箱子来回运送文件。通常来说锁只有两种状态：上锁和解锁。任何有钥匙的人都可以打开上锁的箱子，反之亦然。当鲍勃锁上箱子并将其运送给爱丽丝的时候，他知道爱丽丝可以使用复制的钥匙来解开箱子。从本质上讲，这就是所谓的对称加密的工作方式：一个秘钥同时用于加密和解密，对话的双方都使用相同的密钥。
 
 现在，想象一下，鲍勃制作了一种带有特殊锁的行李箱。此锁具有三个状态，而不是两个：
 
-A.锁定，钥匙一直旋转到左侧
-B.解锁，钥匙旋转到中间。
-C.锁定，钥匙一直旋转到右侧。
+* A.锁定，钥匙一直旋转到左侧
+* B.解锁，钥匙旋转到中间。
+* C.锁定，钥匙一直旋转到右侧。
 
 
 ![](/images/https/ssl-lock-analogy.svg)
 
 该锁带有两把钥匙，而不是一把钥匙：
 
-1号钥匙只能向左转
-2号钥匙只能向右转
+* 1号钥匙只能向左转
+* 2号钥匙只能向右转
+
 这意味着如果后备箱被锁定并且钥匙转到位置A，只有2号钥匙可以通过向右转到位置B（解锁）来解锁。如果行李箱锁定在位置C，则只有1号钥匙可以通过将锁向左转动到位置B来解锁。
 
 换言之，两把钥匙任选其一都可以锁定箱子，但是一旦锁定后，只有另一把钥匙可以解锁箱子。
@@ -261,19 +264,14 @@ C.锁定，钥匙一直旋转到右侧。
 
 Alice can send Bob confidential data via the trunk and be confident that only Bob can unlock it. Once Alice has locked the trunk with the public key, which turns from left to right, only a key that can turn right to left can unlock it. That means only Bob's private key can unlock it.
 Alice can be sure that the trunk is actually from Bob, and not an impersonator, if it's locked with his private key. There's only one key that can lock the trunk so that the lock is in position A, or turned all the way to the left: Bob's private key. True, anyone can unlock it with the public key by turning the key to the right, but it's guaranteed that the trunk is from Bob.
+
 以此类推，在这个比喻中，纯文本信息就是箱子，密钥就等同于实体钥匙，这就是公共密钥加密的运作方式。只有私钥的所有者才能加密数据，让公钥对其进行解密；同时，任何人都可以使用公钥加密数据，但是只有私钥的所有者才能解密它。
 
 Therefore, anyone can send data securely to the private key owner. Also, anyone can verify that data they receive from the owner of the private key is actually from that source, and not from an impersonator (see What is an on-path attack?).
 
-#### TLS / SSL如何使用公共密钥加密？
-Public key encryption is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's SSL/TLS certificate, which is shared publicly, contains the public key, and the private key is installed on the origin server – it's "owned" by the website.
-
-TLS handshakes use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys.
-
-
 ## SSL/TLS
 
-### 什么是 SSL
+### 什么是 SSL？
 
 SSL 代表安全套接字层，是指用于加密和保护互联网上发生的通信的协议。它最初由 Netscape 于 1995 年开发，旨在确保 Internet 通信中的隐私、身份验证和数据完整性。SSL 是如今使用的现代 TLS 加密的前身。
 
@@ -281,41 +279,56 @@ SSL 代表安全套接字层，是指用于加密和保护互联网上发生的�
 
 ![](/images/https/http-vs-https.svg)
 
-#### SSL/TLS 如何工作？
+### 什么是 TLS？
 
-* 为了提供高度隐私，SSL 会对通过 Web 传输的数据进行加密。这意味着，任何试图截取此数据的人都只会看到几乎无法解密的乱码字符。
-* SSL 在两个通信设备之间启动称为握手的身份验证过程，以确保两个设备确实是它们声称的真实身份。
-* SSL 还对数据进行数字签名，以提供数据完整性，验证数据是否在到达目标接收者之前被篡改过。
+传输层安全性（Transport Layer Security，TLS）是一种广泛采用的安全性协议，旨在促进互联网通信的私密性和数据安全性。TLS 的主要用例是对 web 应用程序和服务器之间的通信（例如，web 浏览器加载网站）进行加密。TLS 还可以用于加密其他通信，如电子邮件、消息传递和 IP 语音（VOIP）等。
 
-SSL 已经过多次迭代，安全性逐代增强。SSL 在 1999 年更新为 TLS。
+TLS 由互联网工程任务组（Internet Engineering Task Force, IETF）提出，协议的第一个版本于 1999 年发布。最新版本是 TLS 1.3，发布于 2018 年。
 
-#### SSL/TLS 为何重要？
+![](/images/https/tls_ssl_development_timeline.png)
+
+### SSL 和 TLS 是同一回事吗？
+**SSL 是另一个称为 TLS（传输层安全性）的协议的直接前身。** 在 1999 年，互联网工程任务组（IETF）提出了对 SSL 的更新。由于此更新是由 IETF 开发的，不再牵涉到 Netscape，因此名称更改为 TLS。SSL 的最终版本（3.0）与 TLS 的第一版本之间并无明显差异，应用名称更改只是表示所有权改变。
+
+由于它们紧密地联系在一起，这两个术语经常互换使用并混为一谈。有些人仍然使用 SSL 来指代 TLS，其他人则使用术语“SSL/TLS 加密”，因为 SSL 仍然具有很大的知名度。
+
+
+### SSL 仍然没有落伍吗？
+SSL 自 1996 年推出 SSL 3.0 以来未曾更新过，**现已弃用**。SSL 协议中存在多个已知漏洞，安全专家建议停止使用。实际上，大多数现代 Web 浏览器已彻底不再支持 SSL。
+
+TLS 是依然在网络上实施的最新加密协议，尽管有许多人仍将其称为“SSL 加密”。这可能会使购买安全解决方案的消费者感到困惑。事实上，如今提供“SSL”的任何供应商提供的几乎肯定都是 TLS 保护，这已成为二十多年来的行业标准。但是，由于许多人仍在搜寻“SSL 保护”，因此这个术语在许多产品页面上仍然处于醒目位置。
+
+
+### SSL/TLS 有什么用？
+
+* 数据加密：隐藏从第三方传输的数据。这意味着，任何试图截取此数据的人都只会看到几乎无法解密的乱码字符。
+* 身份验证：确保交换信息的各方是他们所声称的真实身份。
+* 数字签名：提供数据完整性，验证数据是否在到达目标接收者之前被篡改过。
+
+SSL 已经过多次迭代，安全性逐代增强。**SSL 在 1999 年更新为 TLS。**
+
+
+### SSL/TLS 为何重要？
 最初，Web 上的数据是以明文形式传输的，任何人只要截获消息都可以读取。例如，如果消费者访问了购物网站，下了订单并在网站上输入了他们的信用卡号，那么该信用卡号将不加隐藏地在 Internet 上传播。
 
 创建 SSL 就是为了纠正此问题并保护用户隐私。通过对用户和 Web 服务器之间传输的所有数据进行加密，SSL 可确保截获数据的人只能看到混乱的字符。消费者的信用卡号现在可以确保安全，仅在他们输入卡号的购物网站上可见。
 
 SSL 还可以阻止某些类型的网络攻击：它对 Web 服务器进行身份验证，这非常重要，因为攻击者通常会尝试建立伪造网站来欺骗用户并窃取数据。它还可以防止攻击者篡改传输中的数据，就像药品容器上的防篡改封条一样。
 
-#### SSL 和 TLS 是同一回事吗？
-SSL 是另一个称为 TLS（传输层安全性）的协议的直接前身。在 1999 年，互联网工程任务组（IETF）提出了对 SSL 的更新。由于此更新是由 IETF 开发的，不再牵涉到 Netscape，因此名称更改为 TLS。SSL 的最终版本（3.0）与 TLS 的第一版本之间并无明显差异，应用名称更改只是表示所有权改变。
+### 最新的TLS版本有什么优势？
 
-由于它们紧密地联系在一起，这两个术语经常互换使用并混为一谈。有些人仍然使用 SSL 来指代 TLS，其他人则使用术语“SSL/TLS 加密”，因为 SSL 仍然具有很大的知名度。
+简而言之，TLS 1.3 比 TLS 1.2 更快、更安全。使 TLS 1.3 更快的一处更改是对 TLS 握手工作方式的更新：TLS 1.3 中的 TLS 握手只需要一次往返（或来回通信）而不是两次，从而将过程缩短了几毫秒。如果客户端之前连接到网站，TLS 握手的往返次数为零。这使 HTTPS 连接更快，减少延迟并改善整体用户体验。
 
-#### SSL 仍然没有落伍吗？
-SSL 自 1996 年推出 SSL 3.0 以来未曾更新过，现已弃用。SSL 协议中存在多个已知漏洞，安全专家建议停止使用。实际上，大多数现代 Web 浏览器已彻底不再支持 SSL。
+TLS 1.2中的许多主要漏洞与仍受到支持的较旧的加密算法有关。TLS 1.3放弃了对这些易受攻击的加密算法的支持，因此，它不太容易受到网络攻击。
 
-TLS 是依然在网络上实施的最新加密协议，尽管有许多人仍将其称为“SSL 加密”。这可能会使购买安全解决方案的消费者感到困惑。事实上，如今提供“SSL”的任何供应商提供的几乎肯定都是 TLS 保护，这已成为二十多年来的行业标准。但是，由于许多人仍在搜寻“SSL 保护”，因此这个术语在许多产品页面上仍然处于醒目位置。
+### 什么是 SSL 证书？
+SSL 证书就像身份证或徽章一样，证明某人就是他们所说的真实身份。SSL 证书是网站的**源服务器上**安装的文件。它**只是一个数据文件**，包含公钥和网站所有者身份以及其他信息。
 
-#### 什么是 SSL 证书？
-SSL 只能由具有 SSL 证书（技术上称为“TLS 证书”）的网站来实现。SSL 证书就像身份证或徽章一样，证明某人就是他们所说的真实身份。SSL 证书由网站或应用程序的服务器存储并显示在 Web 上。
+SSL 证书中最重要的信息之一是网站的公共密钥。公钥使加密成为可能。同时，Web 服务器还具有一个保密的私有密钥。私钥解密使用公钥加密的数据。私钥应保密并妥善保管。
 
-SSL 证书是网站的源服务器上安装的文件。它只是一个数据文件，包含公钥和网站所有者身份以及其他信息。如果没有 SSL 证书，就无法使用 TLS 来加密网站的流量。
+![](/images/https/class41.png)
 
-SSL 证书中最重要的信息之一是网站的公共密钥。公钥使加密成为可能。用户的设备查看公共密钥，并使用它与 Web 服务器建立安全的加密密钥。同时，Web 服务器还具有一个保密的私有密钥。私钥解密使用公钥加密的数据。
-
-SSL 证书使得网站能够从 HTTP 转到更加安全的 HTTPS。SSL 证书是托管在网站源服务器中的数据文件。SSL 证书促成了 SSL/TLS 加密，它们含有网站的公钥和网站标识以及相关信息。尝试与源服务器通信的设备将引用此文件，以获取公钥并验证服务器的身份。私钥应保密并妥善保管。
-
-#### SSL 证书包含哪些信息？
+### SSL 证书包含哪些信息？
 
 SSL 证书包含以下信息：
 
@@ -328,74 +341,81 @@ SSL 证书包含以下信息：
 * 证书的到期日期
 * 公钥（私钥为保密状态）
 
-用于 SSL 的公钥和私钥本质上是用于加密和解密数据的长字符串。使用公钥加密的数据只能用私钥解密，反之亦然。
+### SSL 证书有哪些不同类型？
 
+* Class 4 SSL证书：即EV SSL证书，顶级SSL证书，又称扩展验证型SSL证书。安全级别最高，验证审核最严格，网站部署EV SSL证书后，浏览器地址栏将变成绿色并显示企业名称。EV SSL证书一般应用于金融、银行、电商等安全需求较高的网站。
 
-#### 网站如何获得 SSL 证书？
+* Class 3 SSL证书：即OV SSL证书，专业级SSL证书，又称机构验证型SSL证书。当前广泛应用的SSL证书，需要验证企业身份信息后颁发。OV SSL证书是当前最常见的证书类型，适用于行政、企业、科研、邮箱、论坛等各类大中型网站。
+
+* Class 2 SSL证书：即IV SSL证书，个人级SSL证书，沃通特有的SSL证书，又称个人验证型SSL证书。验证个人详细信息后颁发，主要应用于私人博客、自媒体等个人网站。
+
+* Class 1 SSL证书：即DV SSL证书，基础级SSL证书，又称域名验证型SSL证书。DV SSL证书是签发只验证域名所有权，快速颁发的SSL证书，安全级别较低。
+
+### 网站如何获得 SSL 证书？
 
 证书颁发机构（CA）负责颁发SSL证书。
 
+网站所有者需要从证书颁发机构获取 SSL 证书，然后将其安装到自己的 Web 服务器上（通常 Web 主机可以处理此过程）。证书颁发机构是一个外部方，可以确认网站所有者是他们所称的身份。他们保留所颁发证书的副本。大多数（但不是全部）CA 为颁发 SSL 证书收取费用。
 
-网站所有者需要从证书颁发机构获取 SSL 证书，然后将其安装到自己的 Web 服务器上（通常 Web 主机可以处理此过程）。证书颁发机构是一个外部方，可以确认网站所有者是他们所称的身份。他们保留所颁发证书的副本。
-
-为了使 SSL 证书有效，域需要从证书颁发机构（CA）获取该证书。CA 是外部组织，也是受信任的第三方，它会生成并颁发 SSL 证书。CA 还使用自己的私钥对证书进行数字签名，以允许客户端设备对其进行验证。大多数（但不是全部）CA 为颁发 SSL 证书收取费用。
-
-颁发之后，需要在网站的源站服务器上安装并激活证书。网站托管服务通常可以为网站运营者处理这一事务。在源站服务器上激活证书后，该网站便可通过 HTTPS 进行加载，并且往返于该网站的所有流量都将受到加密和保护。
-
-#### 什么是自签名 SSL 证书？
+### 什么是自签名 SSL 证书？
 
 从技术上讲，任何人都可以通过生成公私钥对并包括上述所有信息来创建自己的 SSL 证书。此类证书称为自签名证书，因为使用的数字签名将是网站自己的私钥，而不是来自 CA。
 
 但若使用自签名证书，就没有外部权威来验证源站服务器是否是它声称的身份。浏览器认为自签名证书不可信，并且尽管使用了 https:// URL，但可能仍然将站点标记为“不安全”。它们也可能会完全终止连接，从而阻止网站加载。
 
-从技术上讲，任何网站所有者都可以创建自己的 SSL 证书，这些证书称为自签名证书。但是，浏览器不认为自签名证书像证书颁发机构颁发的 SSL 证书一样值得信赖。
+![](/images/https/self.png)
 
-#### SSL 证书有哪些不同类型？
-有几种不同类型的 SSL 证书。一个证书可以应用于一个或多个网站，具体取决于类型：
+### SSL 证书链
 
-* 单域：单域 SSL 证书仅适用于一个域（“域”是网站的名称，例如 www.cloudflare.com）。
-* 通配符：与单域证书一样，通配符 SSL 证书仅适用于一个域。但是，它也包括该域的子域。例如，通配符证书可以覆盖 www.cloudflare.com、blog.cloudflare.com，和 developers.cloudflare.com，而单域证书只能覆盖第一个。
-* 多域：顾名思义，多域 SSL 证书可以应用于多个不相关的域。
+有两种类型的证书机构（CA） ：根CA和中间CA。为了使SSL证书受信任，该证书必须由正在连接的设备的受信任存储区中包括的CA颁发。
 
-SSL 证书还具有不同的验证级别。验证级别就像背景检查一样，并且级别会根据检查的彻底性而变化。
+如果证书不是由受信任的CA颁发的，则连接设备（例如Web浏览器）将检查以查看颁发CA的证书是否由受信任的CA颁发。它会继续检查，直到找到受信任的CA（此时将建立受信任的安全连接），或者找不到受信任的CA（此时设备通常将显示错误）。
 
-* 域验证：这是最严格的验证级别，也是最便宜的级别。企业只需要证明他们控制着域。
-* 组织验证：这是一个需要亲力亲为的过程：证书机构直接联系请求证书的人员或企业。这些证书更受用户信赖。
-* 扩展验证：在发出 SSL 证书之前，需要对组织进行全面的背景检查。
+从根证书到最终用户证书的SSL证书列表代表SSL证书链。
 
-### 什么是TLS？
+下面以百度为例，在浏览器上访问 “www.baidu.com” 域名，地址连左侧有一个小锁的标志，点击就能查看百度的数字证书，如下图所示
 
-传输层安全性（Transport Layer Security，TLS）是一种广泛采用的安全性协议，旨在促进互联网通信的私密性和数据安全性。TLS 的主要用例是对 web 应用程序和服务器之间的通信（例如，web 浏览器加载网站）进行加密。TLS 还可以用于加密其他通信，如电子邮件、消息传递和 IP 语音（VOIP）等。
+![](/images/https/baidu.png)
 
-TLS 由互联网工程任务组（Internet Engineering Task Force, IETF）提出，协议的第一个版本于 1999 年发布。最新版本是 TLS 1.3，发布于 2018 年。
+我们看到这样一个层次关系：
 
-![](/images/https/tls_ssl_development_timeline.png)
+GlobalSign Root CA -> GlobalSign Organization Validation CA -> baidu.com
 
-#### TLS 和 SSL 之间有什么区别？
+这个层次可以抽象为三个级别：
 
-Netscape 开发了名为安全套接字层（Secure Socket Layer，SSL）的上一代加密协议，TLS 由此演变而来。TLS 1.0 版实际上最初作为 SSL 3.1 版开发，但在发布前更改了名称，以表明它不再与 Netscape 关联。由于这个历史原因，TLS 和 SSL 这两个术语有时会互换使用。
+* end-user：即 baidu.com，该证书包含百度的公钥，访问者就是使用该公钥将数据加密后再传输给百度，即在 HTTPS 中使用的证书
+* intermediates：即上文提到的 签发人 Issuer，用来认证公钥持有者身份的证书，负责确认 HTTPS 使用的 end-user 证书确实是来源于百度。这类 intermediates 证书可以有很多级，也就是说 签发人 Issuer 可能会有有很多级
+* root：可以理解为 最高级别的签发人 Issuer，负责认证 intermediates 身份的合法性
 
-#### TLS 和 HTTPS 有什么区别？
+这其实代表了一个信任链条，最终的目的就是为了保证 end-user 证书是可信的，该证书的公钥也就是可信的。
 
-HTTPS 是在 HTTP 协议基础上实施 TLS 加密，所有网站以及其他部分 web 服务都使用该协议。因此，任何使用 HTTPS 的网站都使用 TLS 加密。
+![](/images/https/20210127112042306.png)
 
-#### TLS 有什么作用？
+结合实际的使用场景对证书链进行一个归纳：
 
-TLS 协议实现的功能有三个主要组成部分：加密、认证和完整性。
+1. 为了获取 end-user 的公钥，需要获取 end-user 的证书，因为公钥就保存在该证书中
+2. 为了证明获取到的 end-user 证书是可信的，就要看该证书是否被 intermediate 权威机构认证，等价于是否有权威机构的数字签名
+3. 有了权威机构的数字签名，而权威机构就是可信的吗？需要继续往上验证，即查看是否存在上一级权威认证机构的数字签名
+4. 信任链条的最终是Root CA，他采用自签名，对他的签名只能无条件的信任
 
-* 加密：隐藏从第三方传输的数据。
-* 身份验证：确保交换信息的各方是他们所声称的身份。
-* 完整性：验证数据未被伪造或篡改。
+![](/images/https/20210127112056683.png)
 
-#### 使用最新的TLS版本有什么优势？
 
-简而言之，TLS 1.3 比 TLS 1.2 更快、更安全。使 TLS 1.3 更快的一处更改是对 TLS 握手工作方式的更新：TLS 1.3 中的 TLS 握手只需要一次往返（或来回通信）而不是两次，从而将过程缩短了几毫秒。如果客户端之前连接到网站，TLS 握手的往返次数为零。这使 HTTPS 连接更快，减少延迟并改善整体用户体验。
 
-TLS 1.2中的许多主要漏洞与仍受到支持的较旧的加密算法有关。TLS 1.3放弃了对这些易受攻击的加密算法的支持，因此，它不太容易受到网络攻击。
+### SSL/TLS 如何工作？
 
-#### TLS 如何工作？
+#### 总体工作过程
 
-网站或应用程序要使用 TLS，必须在其源服务器上安装 TLS 证书（由于上述命名混淆，该证书也被称为 SSL 证书）。TLS 证书由证书权威机构颁发给拥有域的个人或企业。该证书包含有关域所有者的重要信息以及服务器的公钥，两者对验证服务器身份都很重要。
+以下是理解 SSL/TLS 工作原理应掌握的基本概念：
+
+* 安全通信从 TLS 握手开始，在这过程中两个通信方打开安全连接并交换公钥
+* 在 TLS 握手期间，双方会生成会话密钥，会话密钥用于加密和解密 TLS 握手之后的所有通信
+* 每一个新会话中使用不同的会话密钥来加密通信
+* TLS 确保服务器方或用户与之交互的网站确实是它们声称的身份
+* TLS 还确保数据没有被篡改，因为传输中包含消息身份验证码（MAC）
+
+使用 TLS 时，用户发送到网站（单击、填写表格等）的 HTTP 数据和网站发送给用户的 HTTP 数据都被加密。接收者必须使用密钥来解密加密的数据。
+
 
 TLS 连接是通过一个称为 TLS 握手的流程启动的。当用户导航到一个使用 TLS 的网站时，用户设备（也称为客户端设备）和 web 服务器之间开始 TLS 握手。
 
@@ -414,19 +434,12 @@ TLS 握手为每个通信会话建立一个密码套件。密码套件是一组�
 
 ![](/images/https/03.png)
 
+#### TLS / SSL如何使用公共密钥加密？
+Public key encryption is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's SSL/TLS certificate, which is shared publicly, contains the public key, and the private key is installed on the origin server – it's "owned" by the website.
+
+TLS handshakes use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys.
 
 
-### SSL/TLS 如何工作？
-
-以下是理解 SSL/TLS 工作原理应掌握的基本概念：
-
-* 安全通信从 TLS 握手开始，在这过程中两个通信方打开安全连接并交换公钥
-* 在 TLS 握手期间，双方会生成会话密钥，会话密钥用于加密和解密 TLS 握手之后的所有通信
-* 每一个新会话中使用不同的会话密钥来加密通信
-* TLS 确保服务器方或用户与之交互的网站确实是它们声称的身份
-* TLS 还确保数据没有被篡改，因为传输中包含消息身份验证码（MAC）
-
-使用 TLS 时，用户发送到网站（单击、填写表格等）的 HTTP 数据和网站发送给用户的 HTTP 数据都被加密。接收者必须使用密钥来解密加密的数据。
 
 #### 何时进行 TLS 握手？
 
