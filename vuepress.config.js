@@ -4,6 +4,12 @@ module.exports = {
     title: '鸽王的窝🕊️👑',
     description: '专注技术分享：AI、前端、后端、算法、设计模式、数学等',
 
+    markdown:{
+        toc:{
+            level: [2,3,4]
+        }
+    },
+
     // 主题和它的配置
     theme: '@vuepress/theme-default',
     themeConfig: {
