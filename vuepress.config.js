@@ -83,7 +83,7 @@ module.exports = {
                 text: 'DevOps', children: [
                     {
                         text: '网络', children: [
-                            { text: 'HTTPS那些事', link: '/devops/network/https' },
+                            { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
                         ]
                     },
                 ]
