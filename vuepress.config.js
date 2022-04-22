@@ -32,6 +32,7 @@ module.exports = {
                     { text: 'Base64编解码', link: '/onlinetools/base64' },
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
                     { text: 'MD5加密', link: '/onlinetools/md5' },
+                    { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
                 ]
             },
         ],
@@ -95,6 +96,8 @@ module.exports = {
                     { text: 'Base64编解码', link: '/onlinetools/base64' },
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
                     { text: 'MD5加密', link: '/onlinetools/md5' },
+                    { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
+
                 ]
             },
         ],
