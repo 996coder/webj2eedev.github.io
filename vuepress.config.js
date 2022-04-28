@@ -4,9 +4,9 @@ module.exports = {
     title: '鸽王的窝🕊️👑',
     description: '专注技术分享：AI、前端、后端、算法、设计模式、数学等',
 
-    markdown:{
-        toc:{
-            level: [2,3,4]
+    markdown: {
+        toc: {
+            level: [2, 3, 4]
         }
     },
 
@@ -33,8 +33,10 @@ module.exports = {
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
                     { text: 'MD5加密', link: '/onlinetools/md5' },
                     { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
+                    { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
             },
+            { text: '7分屠鸭宝典', link: '/english/' },
         ],
         sidebar: [
             // SidebarItem
@@ -97,9 +99,11 @@ module.exports = {
                     { text: 'HTML实体字符转换', link: '/onlinetools/htmlentityconverter' },
                     { text: 'MD5加密', link: '/onlinetools/md5' },
                     { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
-
+                    { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
             },
+            { text: '7分屠鸭宝典', link: '/english/' },
+
         ],
     },
 
