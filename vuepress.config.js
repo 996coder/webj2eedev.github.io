@@ -36,7 +36,7 @@ module.exports = {
                     { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
             },
-            { text: '7分屠鸭宝典', link: '/english/' },
+            { text: '7分屠🦆宝典', link: '/english/' },
         ],
         sidebar: [
             // SidebarItem
@@ -102,7 +102,7 @@ module.exports = {
                     { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
             },
-            { text: '7分屠鸭宝典', link: '/english/' },
+            { text: '7分屠🦆宝典', link: '/english/' },
 
         ],
     },
