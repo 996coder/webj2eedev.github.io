@@ -20,6 +20,8 @@ features:
 - title: 前端
   details: 涉及 经典前端（原生、jQuery、Bootstrap ...）、现代前端（ES6、React、Vue ...）、前端安全、Nodejs、微前端、低代码 等技术
 - title: 在线工具
-  details: 包含 图片转Base64、HTML实体字符转换、MD5加密 等工具  
-footer: 来自一个10年研发经验程序员的总结
+  details: 包含 图片转Base64、HTML实体字符转换、MD5加密 等工具
+- title: 7分屠鸭宝典
+  details: 3次屠鸭失败，怒肝屠鸭武学秘籍，争取第四次成功...
+footer: 来自一个有10年研发经验码农的总结
 ---
