@@ -22,6 +22,6 @@ features:
 - title: 在线工具
   details: 包含 图片转Base64、HTML实体字符转换、MD5加密 等工具
 - title: 7分屠🦆宝典
-  details: 3次失败经历、怒肝7分屠鸭秘籍、争取第四次成功🚀🚀🚀
+  details: 三战失败、怒肝7分屠鸭秘籍。争取四战上岸🚀🚀🚀
 footer: 来自一个有10年研发经验码农的总结
 ---

@@ -22,8 +22,8 @@ module.exports = {
             { text: 'AI', link: '/ai/' },
             { text: '算法', link: '/algorithm/' },
             { text: '架构', link: '/architect/' },
-            { text: '后端', link: '/backend/' },
             { text: 'DevOps', link: '/devops/' },
+            { text: '后端', link: '/backend/' },
             { text: '前端', link: '/frontend/' },
             {
                 text: '在线工具',
@@ -73,6 +73,15 @@ module.exports = {
                 ],
             },
             {
+                text: 'DevOps', children: [
+                    {
+                        text: '网络', children: [
+                            { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
+                        ]
+                    },
+                ]
+            },
+            {
                 text: '后端',
                 children: [
                     {
@@ -82,15 +91,18 @@ module.exports = {
                     },
                 ]
             },
-            {
-                text: 'DevOps', children: [
-                    {
-                        text: '网络', children: [
-                            { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
-                        ]
-                    },
-                ]
-            },
+            { text: '前端', children: [
+                {
+                    text: '效果', children: [
+                        { text: '网站Banner悬浮效果', link: '/frontend/api/Intersection_Observer_API' },
+                    ]
+                },
+                {
+                    text: 'API', children: [
+                        { text: 'Intersection Observer API', link: '/frontend/api/Intersection_Observer_API' },
+                    ]
+                },
+            ] },
             {
                 text: '在线工具',
                 children: [
