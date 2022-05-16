@@ -1,3 +1,5 @@
+const { mediumZoomPlugin } = require('@vuepress/plugin-medium-zoom')
+
 module.exports = {
     // 站点配置
     lang: 'zh-CN',
@@ -70,10 +72,33 @@ module.exports = {
                             },
                         ],
                     },
+                    {
+                        text: '知识图谱',
+                        link: '/ai/kg',
+                        children: [
+                            {
+                                text: '数据库',
+                                children: [
+                                    {
+                                        text: 'Neo4j',
+                                        children: [{
+                                            text: '安装',
+                                            link: '/ai/kg/database/neo4j/install',
+                                            children: [],
+                                        },],
+                                    },
+
+
+                                ],
+                            },
+                        ],
+                    },
                 ],
             },
             {
-                text: 'DevOps', children: [
+                text: 'DevOps', 
+                link: '/devops',
+                children: [
                     {
                         text: '网络', children: [
                             { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
@@ -91,18 +116,20 @@ module.exports = {
                     },
                 ]
             },
-            { text: '前端', children: [
-                {
-                    text: '效果', children: [
-                        { text: '网站Banner悬浮效果', link: '/frontend/api/Intersection_Observer_API' },
-                    ]
-                },
-                {
-                    text: 'API', children: [
-                        { text: 'Intersection Observer API', link: '/frontend/api/Intersection_Observer_API' },
-                    ]
-                },
-            ] },
+            {
+                text: '前端', children: [
+                    {
+                        text: '效果', children: [
+                            { text: '网站Banner悬浮效果', link: '/frontend/api/Intersection_Observer_API' },
+                        ]
+                    },
+                    {
+                        text: 'API', children: [
+                            { text: 'Intersection Observer API', link: '/frontend/api/Intersection_Observer_API' },
+                        ]
+                    },
+                ]
+            },
             {
                 text: '在线工具',
                 children: [
@@ -123,5 +150,11 @@ module.exports = {
     dest: `docs`,
 
     // Dev配置项
-    port: 8282
+    port: 8282,
+
+    plugins: [
+        mediumZoomPlugin({
+            // 配置项
+        }),
+    ],
 }
