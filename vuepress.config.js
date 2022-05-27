@@ -23,7 +23,7 @@ module.exports = {
             { text: '动态', link: '/latest/' },
             { text: 'AI', link: '/ai/' },
             { text: '算法', link: '/algorithm/' },
-            { text: '架构', link: '/architect/' },
+            { text: '架构设计', link: '/architect/' },
             { text: 'DevOps', link: '/devops/' },
             { text: '后端', link: '/backend/' },
             { text: '前端', link: '/frontend/' },
@@ -37,8 +37,7 @@ module.exports = {
                     { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
                     { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
-            },
-            { text: '7分屠🦆宝典', link: '/english/' },
+            }
         ],
         sidebar: [
             // SidebarItem
@@ -77,7 +76,7 @@ module.exports = {
                         link: '/ai/kg',
                         children: [
                             {
-                                text: '数据库',
+                                text: '图数据库',
                                 children: [
                                     {
                                         text: 'Neo4j',
@@ -87,7 +86,11 @@ module.exports = {
                                             children: [],
                                         },],
                                     },
-
+                                    {
+                                        text: 'Cypher',
+                                        link: '/ai/kg/database/cypher',
+                                        children: [],
+                                    },
 
                                 ],
                             },
@@ -96,12 +99,39 @@ module.exports = {
                 ],
             },
             {
-                text: 'DevOps', 
+                text: '架构设计',
+                link: '/architect/',
+                children: [
+                    // SidebarItem
+                    {
+                        text: '数据流图',
+                        link: '/architect/dfd',
+                    },
+                ],
+            },
+            {
+                text: 'DevOps',
                 link: '/devops',
                 children: [
                     {
                         text: '网络', children: [
                             { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
+                        ]
+                    },
+                    {
+                        text: '数据库', children: [
+                            {
+                                text: 'MySQL', children: [
+                                    {
+                                        text: '聚集函数',
+                                        link: '/devops/database/mysql/AggregateFunctions'
+                                    },
+                                    {
+                                        text: '怎么改密码?',
+                                        link: '/devops/database/mysql/ChangePassword'
+                                    },
+                                ]
+                            },
                         ]
                     },
                 ]
@@ -110,8 +140,13 @@ module.exports = {
                 text: '后端',
                 children: [
                     {
-                        text: '环境', children: [
+                        text: '开发环境', children: [
                             { text: 'IDEA激活', link: '/backend/envs/LatestActivateIDEA' },
+                        ]
+                    },
+                    {
+                        text: 'Mybatis', children: [
+                            { text: '自增主键', link: '/backend/mybatis/LatestActivateIDEA' },
                         ]
                     },
                 ]
@@ -141,7 +176,21 @@ module.exports = {
                     { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
             },
-            { text: '7分屠🦆宝典', link: '/english/' },
+            {
+                text: '7分屠🦆宝典',
+                children: [
+                    {
+                        text: 'speaking',
+                        children: [
+                            {
+                                text: '口语备考指南',
+                                link: '/ielts/speaking/prepare'
+                            },
+                        ]
+                    },
+                ]
+
+            },
 
         ],
     },

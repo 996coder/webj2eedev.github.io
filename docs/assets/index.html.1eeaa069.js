@@ -1,0 +1,1 @@
+const e={key:"v-fae7e60e",path:"/ielts/",title:"7\u5206\u5C60\u9E2D\u5B9D\u5178",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"ielts/README.md"};export{e as data};
