@@ -1,0 +1,1 @@
+const e={key:"v-153c7160",path:"/architect/dfd/",title:"\u6570\u636E\u6D41\u56FE\uFF08DFD\uFF09",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1653631149e3,contributors:[{name:"webj2ee",email:"webj2ee@qq.com",commits:1}]},filePathRelative:"architect/dfd/README.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-2ed8a6d0",path:"/backend/mybatis/",title:"MyBatis",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1653631149e3,contributors:[{name:"webj2ee",email:"webj2ee@qq.com",commits:1}]},filePathRelative:"backend/mybatis/README.md"};export{e as data};

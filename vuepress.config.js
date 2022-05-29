@@ -180,10 +180,14 @@ module.exports = {
                 text: '7分屠🦆宝典',
                 children: [
                     {
-                        text: 'speaking',
+                        text: '说',
                         children: [
                             {
-                                text: '口语备考指南',
+                                text: '考试介绍',
+                                link: '/ielts/speaking/intro'
+                            },
+                            {
+                                text: '备考指南',
                                 link: '/ielts/speaking/prepare'
                             },
                         ]

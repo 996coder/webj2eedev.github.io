@@ -1,1 +1,0 @@
-const a={key:"v-8d8ab2b4",path:"/devops/database/mysql/ChangePassword.html",title:"\u600E\u4E48\u6539\u5BC6\u7801",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"devops/database/mysql/ChangePassword.md"};export{a as data};
