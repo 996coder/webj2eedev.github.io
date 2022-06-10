@@ -1,5 +1,4 @@
-const { mediumZoomPlugin } = require('@vuepress/plugin-medium-zoom')
-
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
 module.exports = {
     // 站点配置
     lang: 'zh-CN',
@@ -20,7 +19,6 @@ module.exports = {
         // 添加导航栏
         navbar: [
             { text: '主页', link: '/' },
-            { text: '动态', link: '/latest/' },
             { text: 'AI', link: '/ai/' },
             { text: '算法', link: '/algorithm/' },
             { text: '架构设计', link: '/architect/' },
@@ -115,23 +113,13 @@ module.exports = {
                 children: [
                     {
                         text: '网络', children: [
-                            { text: 'HTTPS入门不太容易', link: '/devops/network/https' },
+                            { text: 'HTTPS', link: '/devops/network/https' },
+                            { text: '内网穿透', link: '/devops/network/IntranetPenetration' },
                         ]
                     },
                     {
-                        text: '数据库', children: [
-                            {
-                                text: 'MySQL', children: [
-                                    {
-                                        text: '聚集函数',
-                                        link: '/devops/database/mysql/AggregateFunctions'
-                                    },
-                                    {
-                                        text: '怎么改密码?',
-                                        link: '/devops/database/mysql/ChangePassword'
-                                    },
-                                ]
-                            },
+                        text: 'Docker', children: [
+                            { text: 'Win环境,Docker怎么能访问宿主网络环境', link: '/devops/docker/dockerdesktop/NetworkingfeaturesinDockerDesktopforWindows' },
                         ]
                     },
                 ]
@@ -145,8 +133,47 @@ module.exports = {
                         ]
                     },
                     {
-                        text: 'Mybatis', children: [
-                            { text: '自增主键', link: '/backend/mybatis/LatestActivateIDEA' },
+                        text: '微服务', children: [
+                            {
+                                text: 'Nacos', children: [
+                                    { text: '安装', link: '/backend/microservice/nacos/install' },
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        text: '数据库', children: [
+                            {
+                                text: 'MySQL', children: [
+                                    {
+                                        text: '安装',
+                                        link: '/backend/mysql/install'
+                                    },
+                                    {
+                                        text: '聚集函数',
+                                        link: '/backend/mysql/AggregateFunctions'
+                                    },
+                                    {
+                                        text: '怎么改密码?',
+                                        link: '/backend/mysql/ChangePassword'
+                                    },
+                                ]
+                            },
+                            {
+                                text: 'Redis', children: [
+                                    { text: '安装', link: '/backend/redis/install' },
+                                ]
+                            },
+                            {
+                                text: 'MinIO', children: [
+                                    { text: '安装', link: '/backend/minio/install' },
+                                ]
+                            },
+                            {
+                                text: 'Mybatis', children: [
+                                    { text: '自增主键', link: '/backend/mybatis/LatestActivateIDEA' },
+                                ]
+                            },
                         ]
                     },
                 ]
@@ -180,6 +207,20 @@ module.exports = {
                 text: '7分屠🦆宝典',
                 children: [
                     {
+                        text: '背景知识',
+                        children: [
+                            {
+                                text: '地理',
+                                children: [
+                                    {
+                                        text: 'Forest & Grassland & Farmland',
+                                        link: '/ielts/background/geography/grassland'
+                                    },
+                                ]
+                            },
+                        ]
+                    },
+                    {
                         text: '说',
                         children: [
                             {
@@ -206,8 +247,8 @@ module.exports = {
     port: 8282,
 
     plugins: [
-        mediumZoomPlugin({
+        docsearchPlugin({
             // 配置项
-        }),
+          }),
     ],
 }

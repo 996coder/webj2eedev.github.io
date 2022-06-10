@@ -3,8 +3,8 @@ home: true
 heroText: 🕊️🦆🕊️🦆
 tagline: 热爱开源、极客精神、乐于分享
 actions:
-  - text: 戳这里 -> 看最新动态
-    link: /latest/
+  - text: 戳这里 -> 从AI开始
+    link: /ai/
     type: primary
 features:
 - title: AI
