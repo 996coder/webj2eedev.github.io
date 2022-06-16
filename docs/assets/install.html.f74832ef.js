@@ -1,0 +1,9 @@
+import{_ as a,r as e,o as t,c as o,a as n,b as c,F as r,f as i,d as l}from"./app.4cd134a9.js";const p={},u=i(`<h1 id="\u5B89\u88C5" tabindex="-1"><a class="header-anchor" href="#\u5B89\u88C5" aria-hidden="true">#</a> \u5B89\u88C5</h1><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">docker</span> run -d <span class="token punctuation">\\</span>
+    -p <span class="token number">9000</span>:9000  <span class="token punctuation">\\</span>
+    -p <span class="token number">9001</span>:9001 <span class="token punctuation">\\</span>
+    --name webj2eedev-minio <span class="token punctuation">\\</span>
+    -v ~/minio/data:/data <span class="token punctuation">\\</span>
+    -e <span class="token string">&quot;MINIO_ROOT_USER=webj2eedev&quot;</span> <span class="token punctuation">\\</span>
+    -e <span class="token string">&quot;MINIO_ROOT_PASSWORD=webj2eedev&quot;</span> <span class="token punctuation">\\</span>
+    quay.io/minio/minio server /data --console-address <span class="token string">&quot;:9001&quot;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div>`,2),d={class:"custom-container tip"},m=n("p",{class:"custom-container-title"},"\u53C2\u8003",-1),_={href:"https://docs.min.io/docs/minio-docker-quickstart-guide",target:"_blank",rel:"noopener noreferrer"},b=l("MinIO Docker Quickstart Guide");function k(h,f){const s=e("ExternalLinkIcon");return t(),o(r,null,[u,n("div",d,[m,n("ul",null,[n("li",null,[n("a",_,[b,c(s)])])])])],64)}var g=a(p,[["render",k],["__file","install.html.vue"]]);export{g as default};

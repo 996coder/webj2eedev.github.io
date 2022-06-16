@@ -1,1 +1,0 @@
-const t={key:"v-70b9b4f3",path:"/ielts/speaking/intro.html",title:"\u96C5\u601D\u53E3\u8BED\u8003\u8BD5\u4ECB\u7ECD",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"ielts/speaking/intro.md"};export{t as data};

@@ -1,0 +1,1 @@
+const e={key:"v-5c3250ad",path:"/backend/mysql/ChangePassword.html",title:"\u600E\u4E48\u6539\u5BC6\u7801",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654827038e3,contributors:[{name:"webj2ee",email:"webj2ee@qq.com",commits:1}]},filePathRelative:"backend/mysql/ChangePassword.md"};export{e as data};

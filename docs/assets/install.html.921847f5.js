@@ -1,0 +1,1 @@
+const e={key:"v-56711ae9",path:"/backend/minio/install.html",title:"\u5B89\u88C5",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654827038e3,contributors:[{name:"webj2ee",email:"webj2ee@qq.com",commits:1}]},filePathRelative:"backend/minio/install.md"};export{e as data};
