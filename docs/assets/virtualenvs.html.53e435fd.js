@@ -1,0 +1,1 @@
+const t={key:"v-3fe73a82",path:"/python/virtualenvs.html",title:"\u865A\u62DF\u73AF\u5883\uFF08Virtual environments\uFF09",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"python/virtualenvs.md"};export{t as data};

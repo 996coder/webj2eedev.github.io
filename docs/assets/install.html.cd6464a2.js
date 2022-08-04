@@ -1,0 +1,1 @@
+const t={key:"v-15d58bf4",path:"/python/flask/install.html",title:"Install",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"python/flask/install.md"};export{t as data};

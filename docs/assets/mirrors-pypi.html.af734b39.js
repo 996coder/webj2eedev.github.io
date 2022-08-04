@@ -1,0 +1,1 @@
+const t={key:"v-57b2c038",path:"/python/mirrors-pypi.html",title:"PyPI \u955C\u50CF",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u6E05\u534E",slug:"\u6E05\u534E",children:[]}],git:{updatedTime:null,contributors:[]},filePathRelative:"python/mirrors-pypi.md"};export{t as data};

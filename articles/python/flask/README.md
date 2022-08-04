@@ -1,0 +1,5 @@
+# Flask
+
+Flask是一个用Python编写的Web应用程序框架。Armin Ronacher带领一个名为Pocco的国际Python爱好者团队开发了Flask。Flask基于Werkzeug WSGI工具包和Jinja2模板引擎。两者都是Pocco项目。
+
+Flask也被称为“microframework” ，因为它使用简单的核心，用extension增加其他功能。Flask没有默认使用的数据库、窗体验证工具。

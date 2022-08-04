@@ -1,1 +1,0 @@
-const e={key:"v-7e863df3",path:"/ielts/background/geography/grassland.html",title:"Forest & Grassland & Farmland",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1654827038e3,contributors:[{name:"webj2ee",email:"webj2ee@qq.com",commits:1}]},filePathRelative:"ielts/background/geography/grassland.md"};export{e as data};

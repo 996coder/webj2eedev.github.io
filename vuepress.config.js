@@ -19,6 +19,7 @@ module.exports = {
         // 添加导航栏
         navbar: [
             { text: '主页', link: '/' },
+            { text: 'Python', link: '/python/' },
             { text: 'AI', link: '/ai/' },
             { text: '算法', link: '/algorithm/' },
             { text: '架构设计', link: '/architect/' },
@@ -38,7 +39,29 @@ module.exports = {
             }
         ],
         sidebar: [
-            // SidebarItem
+            {
+                text: 'Python',
+                children: [{
+                    text: "PyPI镜像",
+                    link: "/python/mirrors-pypi"
+                },{
+                    text: "虚拟环境",
+                    link: "/python/virtualenvs"
+                },{
+                    text: "Flask",
+                    link: "/python/flask",
+                    children: [{
+                        text: "Install",
+                        link: "/python/flask/install"
+                    },{
+                        text: "热更新",
+                        link: "/python/flask/debugmode"
+                    }]
+                },{
+                    text: "requirements.txt",
+                    link: "/python/requirements.txt"
+                }]
+            },
             {
                 text: 'AI',
                 link: '/ai/',
@@ -202,50 +225,7 @@ module.exports = {
                     { text: 'JSON格式化', link: '/onlinetools/jsonformat' },
                     { text: '正则表达式测试', link: '/onlinetools/regextester' },
                 ]
-            },
-            {
-                text: '7分屠🦆宝典',
-                children: [
-                    {
-                        text: '背景知识',
-                        children: [
-                            {
-                                text: '地理',
-                                children: [
-                                    {
-                                        text: 'Forest & Grassland & Farmland',
-                                        link: '/ielts/background/geography/grassland'
-                                    },
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        text: '英语基础',
-                        children: [
-                            {
-                                text: 'Discourse Markers',
-                                link: '/ielts/basic/DiscourseMarkers'
-                            },
-                        ]
-                    },
-                    {
-                        text: '说',
-                        children: [
-                            {
-                                text: '考试介绍',
-                                link: '/ielts/speaking/intro'
-                            },
-                            {
-                                text: '备考指南',
-                                link: '/ielts/speaking/prepare'
-                            },
-                        ]
-                    },
-                ]
-
-            },
-
+            }
         ],
     },
 
@@ -258,6 +238,6 @@ module.exports = {
     plugins: [
         docsearchPlugin({
             // 配置项
-          }),
+        }),
     ],
 }

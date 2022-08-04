@@ -1,0 +1,1 @@
+const t={key:"v-5d08b8d6",path:"/python/flask/",title:"Flask",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"python/flask/README.md"};export{t as data};
